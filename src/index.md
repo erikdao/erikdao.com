@@ -1,5 +1,5 @@
 ---
-title: 'Hello, World'
+title: 'Erik Dao'
 layout: 'layouts/home.html'
 ---
 Hello, World
