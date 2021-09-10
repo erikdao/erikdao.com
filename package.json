@@ -1,0 +1,24 @@
+{
+  "name": "erikdao.com",
+  "version": "0.1.0",
+  "description": "Repository for My Personal Online Resume and Blog",
+  "main": ".eleventy.js",
+  "scripts": {
+    "start": "npx eleventy --serve",
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
+    "build": "env NODE_ENV=production npx eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erikdao/erikdao.com"
+  },
+  "author": {
+    "email": "cuong@neuraltalks.io",
+    "name": "Erik Dao",
+    "url": "https://erikdao.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  }
+}
