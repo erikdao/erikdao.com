@@ -1,7 +1,7 @@
 <header class="header py-12" role="banner">
   <div class="flex items-center justify-between mx-auto w-11/12 max-w-screen-xl">
     <a href="/" class="flex items-center" rel="home" aria-label="Go To Homepage">
-      <img src="images/icons/avatar.jpg" alt="Erik Dao" class="rounded-full mr-2" width="48" height="48">
+      <img src="/images/icons/avatar.jpg" alt="Erik Dao" class="rounded-full mr-2" width="48" height="48">
       <span class="font-bold text-base">Erik Dao</span>
     </a>
 
@@ -11,9 +11,13 @@
           <ul id="nav-menu" class="flex p-0 m-0 list-none">
             {% for item in navigation.items %}
             <li class="relative">
-              <a href="{{ item.url }}" class="flex items-center relative lowercase py-2 px-3">
+              <a href="{{ item.url }}" class="flex items-top relative lowercase py-2 px-3" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
                 <span class="block mr-1 font-bold" aria-hidden="true">{{ item.order }}</span>
-                {{ item.text }}
+                {% if helpers.isActiveLink(item.url, page.url) %}
+                <span class="border-b-4 {{ item.css }}">{{ item.text }}</span>
+                {% else %}
+                <span>{{ item.text }}</span>
+                {% endif %}
               </a>
             </li>
             {% endfor %}

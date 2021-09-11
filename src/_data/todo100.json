@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "order": 1,
+      "text": "Become the first author of a paper at top-tier conference",
+      "done": false
+    },
+    {
+      "order": 2,
+      "text": "Travel to an African country",
+      "done": false
+    },
+    {
+      "order": 3,
+      "text": "Read 200 books",
+      "done": false
+    },
+    {
+      "order": 4,
+      "text": "Travel abroad with my family",
+      "done": false
+    },
+    {
+      "order": 5,
+      "text": "Build a 120P nature aquarium tank",
+      "done": false
+    },
+    {
+      "order": 6,
+      "text": "Visit a Middle Eastern country",
+      "subText": "(Saudi Arabia from Aug 2017 - Jan 2018)",
+      "done": true
+    },
+    {
+      "order": 7,
+      "text": "Go on a road trip around Iceland",
+      "done": false
+    },
+    {
+      "order": 8,
+      "text": "Lose weights, maintain ~75kg",
+      "done": false
+    },
+    {
+      "order": 9,
+      "text": "Buy my own home",
+      "done": false
+    },
+    {
+      "order": 10,
+      "text": "Learn French",
+      "done": false
+    }
+  ]
+}
