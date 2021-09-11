@@ -13,7 +13,9 @@
 <body class="text-gray-800">
   {% include "partials/site-header.html" %}
 
-  <main tabindex="-1" id="main-content" class="flex flex-col mx-auto w-11/12 max-w-screen-xl">{% block content %} {% endblock %}</main>
+  <main tabindex="-1" id="main-content" class="flex flex-col max-w-screen-xl mx-auto w-11/12 sm:w-10/12">
+    {% block content %} {% endblock %}
+  </main>
 
   {% include "partials/site-footer.html" %}
 </body>

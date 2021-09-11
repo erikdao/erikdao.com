@@ -7,13 +7,30 @@
   {% include "partials/page-header.html" %}
 
   <div class="flex flex-col text-xl font-light mb-16">
+    <article class="text-lg sm:text-xl font-light leading-snug mb-8 space-y-4">
+      <p>I'm originally from Vietnam. Before coming to Sweden, I spent a couple of months doing research internships in machine learning, computer vision at National University of Singapore (Singapore), and King Abdullah University of Science and Technology (Saudi Arabia). After working as a software engineer for more than four years, I was convinced that I want to transition my career into machine learning. As a starting point, I moved to Sweden to join the master's programme in machine learning at KTH.</p>
+
+      <p>I start this blog with two purposes 1) to document my journey while learning new things; and 2) to share them with others and my future self. The former reason is to make sure that I understand what I've learned, and also to eliminate my scare of writing ;-) The later is to satisfy my personal wish to contribute to the community.</p>
+    </article>
+
+    <article class="text-lg sm:text-xl font-light leading-snug mb-8 space-y-4">
+      <p>If you scroll down, you can find some more random things about me.</p>
+    </article>
+
     <article class="flex flex-col" id="list-100">
-      <h2 class="text-2xl font-medium mb-4">
-        <span class="text-yellow-600 border-b-4 border-yellow-100 pb-0.5 hover:bg-yellow-100 cursor-pointer">100 things I want to do before I die</span>
+      <h2 class="text-lg sm:text-xl font-medium mb-4">
+        <span class="text-pink-600 border-b-4 border-pink-100 pb-0.5 hover:bg-pink-100 cursor-pointer">100 things I want to do before I die</span>
       </h2>
       <ul class="">
       {% for item in todo100.items %}
-        <li class="leading-snug">
+        <li class="leading-snug flex items-top">
+          {% if item.done %}
+          <span class="text-green-400 w-8">
+            {% include "partials/check.svg" %}
+          </span>
+          {% else %}
+          <span class="w-8 block flex-shrink-0"> </span>
+          {% endif %}
           <span class="inline-block w-8">{{ item.order }}.</span>
           {% if item.done %}
           <span class="line-through">{{ item.text }}</span>

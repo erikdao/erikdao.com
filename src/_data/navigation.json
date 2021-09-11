@@ -2,31 +2,26 @@
   "items": [{
     "text": "Home",
     "url": "/",
-    "order": "01",
-    "css": "border-red-400"
+    "order": "01"
   },
   {
     "text": "Machine Learning",
     "url": "/machine-learning/",
-    "order": "02",
-    "css": "border-blue-400"
+    "order": "02"
   },
   {
     "text": "Software Engineering",
     "url": "/software-engineering/",
-    "order": "03",
-    "css": "border-green-400"
+    "order": "03"
   },
   {
     "text": "Life",
     "url": "/life/",
-    "order": "04",
-    "css": "border-pink-400"
+    "order": "04"
   },
   {
     "text": "About",
     "url": "/about/",
-    "order": "05",
-    "css": "border-yellow-400"
+    "order": "05"
   }]
 }

@@ -1,5 +1,5 @@
 <header class="header py-12" role="banner">
-  <div class="flex items-center justify-between mx-auto w-11/12 max-w-screen-xl">
+  <div class="flex items-center justify-between mx-auto w-11/12 sm:w-10/12 max-w-screen-xl">
     <a href="/" class="flex items-center" rel="home" aria-label="Go To Homepage">
       <img src="/images/icons/avatar.jpg" alt="Erik Dao" class="rounded-full mr-2" width="48" height="48">
       <span class="font-bold text-base">Erik Dao</span>
@@ -14,9 +14,9 @@
               <a href="{{ item.url }}" class="flex items-top relative lowercase py-2 px-3" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
                 <span class="block mr-1 font-bold" aria-hidden="true">{{ item.order }}</span>
                 {% if helpers.isActiveLink(item.url, page.url) %}
-                <span class="border-b-4 {{ item.css }}">{{ item.text }}</span>
+                <span class="border-b-4 border-pink-100 text-pink-600 bg-pink-100">{{ item.text }}</span>
                 {% else %}
-                <span>{{ item.text }}</span>
+                <span class="border-b-4 border-pink-100 text-pink-600">{{ item.text }}</span>
                 {% endif %}
               </a>
             </li>

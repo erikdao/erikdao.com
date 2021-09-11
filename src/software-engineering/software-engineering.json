@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/post.html",
+  "permalink": "/software-engineering/{{ title | slug }}/index.html"
+}

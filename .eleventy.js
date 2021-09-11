@@ -36,6 +36,11 @@ module.exports = config => {
     return [...collection.getFilteredByGlob('./src/machine-learning/*.md')].reverse();
   });
 
+  // Returns a collection of software engineering posts in reverse order
+  config.addCollection('swePosts', collection => {
+    return [...collection.getFilteredByGlob('./src/software-engineering/*.md')].reverse();
+  });
+
   return {
     markdownTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
