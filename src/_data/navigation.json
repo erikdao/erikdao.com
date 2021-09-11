@@ -1,14 +1,27 @@
 {
   "items": [{
     "text": "Home",
-    "url": "/"
+    "url": "/",
+    "order": "01"
   },
   {
-    "text": "Blog",
-    "url": "/blog/"
+    "text": "Machine Learning",
+    "url": "/machine-learning/",
+    "order": "02"
+  },
+  {
+    "text": "Software Engineering",
+    "url": "/software-engineering/",
+    "order": "03"
+  },
+  {
+    "text": "Life",
+    "url": "/life/",
+    "order": "04"
   },
   {
     "text": "About",
-    "url": "/about/"
+    "url": "/about/",
+    "order": "05"
   }]
 }

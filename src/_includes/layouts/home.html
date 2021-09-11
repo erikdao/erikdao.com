@@ -1,5 +1,20 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<h1>Hello World</h1>
+<div id="hero" class="hero fade-in flex flex-col justify-center pa-4" style="min-height: 420px;">
+  <div class="hero__inner flex flex-col pt-8 pb-16">
+    <h1 class="text-7xl leading-none mb-6 order-2 font-serif font-medium">I do machine learning.</h1>
+    <p class="uppercase font-bold mb-4 text-xl order-1 text-pink-600">Hej, My name is Erik</p>
+    <div class="text-3xl font-light leading-snug order-3">
+      <p class="m-0">
+        I'm a software engineer and machine learning master's student in Stockholm, Sweden. <br />
+        I write about machine learning, software engineering and things I've learned.
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="text-4xl font-medium">Featured Posts</h2>
+  </div>
+</div>
 {% endblock %}
