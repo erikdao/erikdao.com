@@ -14,7 +14,7 @@
     </article>
 
     <article class="text-lg sm:text-xl font-light leading-snug mb-8 space-y-4">
-      <p>If you scroll down, you can find some more random things about me.</p>
+      <p>If you keep scrolling down, you can find some more random things about me.</p>
     </article>
 
     <article class="flex flex-col" id="list-100">
@@ -23,7 +23,7 @@
       </h2>
       <ul class="">
       {% for item in todo100.items %}
-        <li class="leading-snug flex items-top">
+        <li class="leading-snug flex items-center">
           {% if item.done %}
           <span class="text-green-400 w-8">
             {% include "partials/check.svg" %}

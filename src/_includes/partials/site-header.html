@@ -12,7 +12,7 @@
             {% for item in navigation.items %}
             <li class="relative">
               <a href="{{ item.url }}" class="flex items-top relative lowercase py-2 px-3" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
-                <span class="block mr-1 font-bold" aria-hidden="true">{{ item.order }}</span>
+                <span class="block mr-2 font-bold" aria-hidden="true">{{ item.order }}</span>
                 {% if helpers.isActiveLink(item.url, page.url) %}
                 <span class="border-b-4 border-pink-100 text-pink-600 bg-pink-100">{{ item.text }}</span>
                 {% else %}
