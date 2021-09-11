@@ -1,0 +1,22 @@
+<div class="mb-20">
+  <h2 class="text-3xl font-medium font-serif mb-6">Recent Posts</h2>
+  <ul role="list" class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+    {% for item in collections.featuredPosts %}
+    <li class="relative">
+      <article class="featured-article w-full bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-pink-500 overflow-hidden relative p-1 cursor-pointer">
+        <div class="post__image bg-pink-100 -m-2">
+          <img src="{{ item.data.socialImage }}" alt="{{ item.data.altText }}" loading="lazy">
+        </div>
+        <p class="leading-7 p-2">
+          <time datetime="{{ item.data.date | w3DateFilter }}" class="text-sm">{{ item.data.date | dateFilter }}</time>
+        </p>
+        <h3 class="font-sans text-xl font-bold leading-tight p-2 text-pink-600">
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+        </h3>
+        <p class="p-2 font-light overflow-ellipsis max-h-36 h-32">{{ item.data.excerpt }}</p>
+        <div class="block h-6"></div>
+      </article>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

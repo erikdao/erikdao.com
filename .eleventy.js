@@ -2,6 +2,7 @@ const htmlmin = require('html-minifier');
 // Filters
 const dateFilter = require('./src/filters/date-filter.js');
 const w3DateFilter = require('./src/filters/w3-date-filter.js');
+const sortByDisplayOrder = require('./src/utils/sort-by-display-order.js');
 
 module.exports = config => {
   var md = require('markdown-it');
@@ -45,6 +46,12 @@ module.exports = config => {
   // Returns a collection of software engineering posts in reverse order
   config.addCollection('swePosts', collection => {
     return [...collection.getFilteredByGlob('./src/software-engineering/*.md')].reverse();
+  });
+
+  config.addCollection('featuredPosts', collection => {
+    return sortByDisplayOrder(collection.getFilteredByGlob('./src/**/*.md')).filter(
+      x => x.data.featured
+    );
   });
 
   return {
