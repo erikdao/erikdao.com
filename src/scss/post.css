@@ -1,0 +1,6 @@
+/*
+ * Formmat markdown post content
+ */
+.post__content h2 {
+  @apply text-2xl sm:text-3xl font-sans;
+}

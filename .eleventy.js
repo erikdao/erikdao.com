@@ -4,6 +4,10 @@ const dateFilter = require('./src/filters/date-filter.js');
 const w3DateFilter = require('./src/filters/w3-date-filter.js');
 
 module.exports = config => {
+  var md = require('markdown-it');
+  var implicitFigures = require('markdown-it-implicit-figures');
+  config.setLibrary("md", md({ html: true, breaks: true }).use(implicitFigures));
+
   // Add filters
   config.addFilter('dateFilter', dateFilter);
   config.addFilter('w3DateFilter', w3DateFilter);
@@ -12,6 +16,8 @@ module.exports = config => {
   config.addPassthroughCopy({
     'src/_includes/assets/css/global.css': './global.css'
   });
+
+  config.addWatchTarget('./src/scss/*.css');
 
   // Minify html
   config.addTransform('htmlmin', (content, outputPath) => {

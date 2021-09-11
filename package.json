@@ -4,7 +4,7 @@
   "description": "Repository for My Personal Online Resume and Blog",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "yarn run tailwind:process & npx eleventy --serve",
+    "start": "npx eleventy --serve & yarn run tailwind:process",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss src/scss/global.css --o dist/global.css && cleancss dist/global.css -o dist/global.css",
     "tailwind:process": "npx postcss src/scss/global.css --o src/_includes/assets/css/global.css --watch"
@@ -26,6 +26,7 @@
     "concurrently": "^6.2.1",
     "html-minifier": "^4.0.0",
     "markdown-it": "^12.2.0",
+    "markdown-it-implicit-figures": "^0.10.0",
     "moment": "^2.29.1",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.2.14"
