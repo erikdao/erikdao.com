@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.link {
+  @apply text-pink-600 no-underline;
+}
+
 /*
  * Formmat markdown post content
  */
@@ -45,16 +49,17 @@
   box-shadow: 0 3px 6px rgba(0,0,0,.15),0 2px 4px rgba(0,0,0,.12);
 }
 
-.featured-article img {
-  @apply bg-pink-100;
+.featured__item .item__img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   filter: grayscale(100%) contrast(.75) brightness(1.25);
   mix-blend-mode: multiply;
+  transition-duration: .1s;
+  transition-property: background,filter;
 }
 
-.featured-article:hover img {
+.featured__item:hover .item__img {
   filter: none;
   mix-blend-mode: normal;
 }

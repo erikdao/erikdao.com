@@ -22,7 +22,7 @@
     },
     {
       "order": 5,
-      "text": "Build a 120P nature aquarium tank",
+      "text": "Build a 120P nature aquarium",
       "done": false
     },
     {
@@ -49,6 +49,11 @@
     {
       "order": 10,
       "text": "Learn French",
+      "done": false
+    },
+    {
+      "order": 11,
+      "text": "Study a non-programming thing (likely UX)",
       "done": false
     },
     {

@@ -5,6 +5,8 @@ const w3DateFilter = require('./src/filters/w3-date-filter.js');
 const sortByDisplayOrder = require('./src/utils/sort-by-display-order.js');
 
 module.exports = config => {
+  config.setUseGitIgnore(false);
+
   var md = require('markdown-it');
   var implicitFigures = require('markdown-it-implicit-figures');
   config.setLibrary("md", md({ html: true, breaks: true }).use(implicitFigures));
@@ -18,7 +20,7 @@ module.exports = config => {
     'src/_includes/assets/css/global.css': './global.css'
   });
 
-  config.addWatchTarget('./src/scss/*.css');
+  // config.addWatchTarget('./src/scss/*.css');
 
   // Minify html
   config.addTransform('htmlmin', (content, outputPath) => {
