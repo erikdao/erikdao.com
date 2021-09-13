@@ -16,6 +16,7 @@ module.exports = config => {
   config.addFilter('w3DateFilter', w3DateFilter);
 
   config.addPassthroughCopy('./src/images/');
+  config.addPassthroughCopy('./src/resources/');
   config.addPassthroughCopy({
     'src/_includes/assets/css/global.css': './global.css'
   });
