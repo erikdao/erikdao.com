@@ -22,8 +22,7 @@
 
 {% if socialImage %}
   <meta name="twitter:card" content="{{ siteTitle }}" />
-  <meta property="og:image" content="{{ socialImage }}" />
-  <!-- <meta name="twitter:image" content="{{ socialImage }}" /> -->
+  <meta property="og:image" content="{{ socialImage | url }}" />
   <meta name="twitter:creator" content="{{ site.authorName }}" />
   <meta property="og:image:alt" content="Page image for {{ site.name }}" />
   <meta name="twitter:image:alt" content="Page image for {{ site.name }}" />
