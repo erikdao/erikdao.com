@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="post__content mx-auto w-11/12 sm:w-9/12 text-lg sm:text-xl text-gray-600 font-serif font-light leading-normal">
-    {{ content | safe }}
+    {{ content | latex | safe }}
     </div>
   </article>
 {% endblock %}

@@ -1,4 +1,5 @@
 const htmlmin = require('html-minifier');
+const katex = require('katex');
 // Filters
 const dateFilter = require('./src/filters/date-filter.js');
 const w3DateFilter = require('./src/filters/w3-date-filter.js');
@@ -14,6 +15,16 @@ module.exports = config => {
   // Add filters
   config.addFilter('dateFilter', dateFilter);
   config.addFilter('w3DateFilter', w3DateFilter);
+  // Render katex math
+  config.addFilter('latex', content => {
+    return content.replace(/\$\$(.+?)\$\$/g, (_, equation) => {
+      const cleanEquation = equation
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+
+      return katex.renderToString(cleanEquation, { throwOnError: false })
+    })
+  })
 
   config.addPassthroughCopy('./src/images/');
   config.addPassthroughCopy('./src/resources/');
