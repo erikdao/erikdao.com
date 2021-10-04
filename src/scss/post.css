@@ -4,3 +4,8 @@
 .post__content h2 {
   @apply text-2xl sm:text-3xl font-sans;
 }
+
+.post__content ol {
+  list-style: decimal;
+  padding-left: 0.5rem;
+}

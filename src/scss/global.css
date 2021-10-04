@@ -6,6 +6,14 @@
   @apply text-pink-600 no-underline;
 }
 
+.hover-link:hover {
+ @apply text-pink-600 transition-all duration-100;
+}
+
+.block-equation {
+  @apply flex justify-center py-4;
+}
+
 /*
  * Formmat markdown post content
  */
@@ -35,6 +43,20 @@
 
 .post__content hr {
   @apply my-4;
+}
+
+.post__content ol, ul {
+  padding-left: 0.8rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post__content ol {
+  list-style: decimal;
+}
+
+.post__content ul {
+  list-style: disc;
 }
 
 .featured-article {

@@ -57,6 +57,11 @@
       "done": false
     },
     {
+      "order": 12,
+      "text": "Learn to swim 😜",
+      "done": false
+    },
+    {
       "order": "xx",
       "text": "What else do you suggest?",
       "done": false
