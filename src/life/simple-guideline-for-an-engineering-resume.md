@@ -94,3 +94,6 @@ Your brand is the reputation conjured up when people see your face or read your 
 * What skills are the most helpful in your most recent role? These skills should appear throughout your resume. Emphasize what you want to do in your next job.
 * What skills have you mastered but would rather not use every day? Where feasible, omit these skills from your resume. Don’t emphasize the things you don’t want to do.
 * What skills would you like to build but have not yet had the opportunity to practice? Make sure to incorporate this into your project, so you can add it to your resume!
+
+
+Above are some short guidelines to stucture, and form the content of your resume. Hope you'll find them helpful!
