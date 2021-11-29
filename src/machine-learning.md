@@ -9,4 +9,5 @@ permalink: 'machine-learning{% if pagination.pageNumber > 0 %}/page/{{ paginatio
 paginationPrevText: 'Newer posts'
 paginationNextText: 'Older posts'
 paginationAnchor: '#post-list'
+socialImage: '/images/about/fb_og_about.png'
 ---

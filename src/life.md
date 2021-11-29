@@ -9,4 +9,5 @@ paginationPrevText: 'Newer posts'
 paginationNextText: 'Older posts'
 paginationAnchor: '#post-list'
 summary: "Various things in my life. Posts mostly in Vietnamese, with some in English."
+socialImage: '/images/about/fb_og_about.png'
 ---

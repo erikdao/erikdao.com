@@ -9,4 +9,5 @@ permalink: 'software-engineering{% if pagination.pageNumber > 0 %}/page/{{ pagin
 paginationPrevText: 'Newer posts'
 paginationNextText: 'Older posts'
 paginationAnchor: '#post-list'
+socialImage: '/images/about/fb_og_about.png'
 ---
