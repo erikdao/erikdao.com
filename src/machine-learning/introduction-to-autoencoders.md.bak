@@ -2,7 +2,7 @@
 title: 'Introduction to Autoencoders'
 date: '2021-09-13'
 tags: ['machine learning']
-featured: true  # Update later
+featured: false  # Update later
 summary: "Autoencoders are a type of neural network that learns lower-dimensional representation of the input."
 socialImage: '/images/machine-learning/20210922-autoencoders-fbimg.png'
 ---

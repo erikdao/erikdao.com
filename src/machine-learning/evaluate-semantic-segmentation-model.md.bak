@@ -2,7 +2,7 @@
 title: 'Evaluate semantic segmentation models'
 date: '2021-09-11'
 tags: ['machine learning']
-featured: true
+featured: false
 summary: "Semantic segmentation is a dense-prediction task. When evaluating segmentation models, common evaluation metrics such as classification accuracy is not useful. In this post, I'm going to show you two metrics for evaluating image segmentation models."
 socialImage: '/images/life/20210417_stockholm_slussen.jpeg'
 ---

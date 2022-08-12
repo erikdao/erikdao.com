@@ -10,18 +10,13 @@
     "order": "02"
   },
   {
-    "text": "Software Engineering",
-    "url": "/software-engineering/",
-    "order": "03"
-  },
-  {
     "text": "Life",
     "url": "/life/",
-    "order": "04"
+    "order": "03"
   },
   {
     "text": "About",
     "url": "/about/",
-    "order": "05"
+    "order": "04"
   }]
 }

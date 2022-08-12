@@ -2,7 +2,7 @@
 title: 'Gentle Introduction to Markov Chain'
 date: '2021-11-08'
 tags: ['machine learning', 'reinforcement learning', 'markov chain']
-featured: false
+featured: true
 summary: "Markov Chain is a mathematical system to model a stochastic process in which the future state of the system depends only on the current state but not the past states."
 # socialImage: '/images/life/20210417_stockholm_slussen.jpeg'
 ---
