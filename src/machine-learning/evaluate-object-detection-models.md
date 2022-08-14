@@ -47,11 +47,17 @@ IoU varies between $$0$$ and $$1$$. An $$\mathrm{IoU} = 1$$ means a perfect matc
 * False positive (FP): An incorrect detection of a non-existing object or a misplaced detection of an existing object;
 * False negative (FN): An undetected ground-truth bounding box.
 
-<figure class="figure mx-auto w-full p-2 flex flex-col items-center">
+<figure class="figure mx-auto w-full p-2 py-4 flex flex-col items-center">
   <img src="/images/machine-learning/20220813-tpfpfn.png" alt="Intersection over Union">
-  <figcaption class="text-sm font-sans text-gray-600 mt-4">Illustration of the Intersection over Union (IoU)</figcaption>
+  <!-- <figcaption class="text-sm font-sans text-gray-600 mt-4">Illustration of the Intersection over Union (IoU)</figcaption> -->
 </figure>
+
+In the leftmost illustration of a TP example, there is a ground-truth box of the cat in the image and there is a prediction that is close enough to the ground-truth. In FP examples, either the predicted box is too off w.r.t to the ground-truth, or there is prediction of an object that has no corresponding ground-truth box in the image. Lastly, in the FN example, the object is there with a ground-truth box, but there is no prediction for it.
 
 ## Precision and Recall
 
 These two concepts are originated from information retrieval
+
+<div class="block-equation">
+  $$\mathrm{Pr} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}}$$
+</div>
