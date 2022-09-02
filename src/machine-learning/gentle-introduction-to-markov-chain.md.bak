@@ -2,16 +2,16 @@
 title: 'Gentle Introduction to Markov Chain'
 date: '2021-11-08'
 tags: ['machine learning', 'reinforcement learning', 'markov chain']
-featured: true
+featured: false
 summary: "Markov Chain is a mathematical system to model a stochastic process in which the future state of the system depends only on the current state but not the past states."
 # socialImage: '/images/life/20210417_stockholm_slussen.jpeg'
 ---
 A Markov chain is a stochastic model describing a sequence of random events in which the future state of the system depends only on the current state, but not the past ones. It has many real-world applications such as in information theory, in the pagerank algorithm by Google, to, for instance, modeling the currency exchange rate.
 
-Before we start diving into the details of Markov Chain, let's agree on some terminologies. Consider a Markov model describing a sequence of random variable $$X$$, the state of the model at time $$t = n$$ is denoted as $$X_n$$. The set of all possible states is $$S = \{s_1, s_2, \dots, s_n\}$$. We also denote $$\mathbb{P}$$ as the probability measure, this is different from the state transition matrix $$P$$ which we will go into below.
+Some notations before we start! Consider a Markov model describing a sequence of random variable $$X$$, the state of the model at time $$t = n$$ is denoted as $$X_n$$. The set of all possible states is $$S = \{s_1, s_2, \dots, s_n\}$$. We also denote $$\mathbb{P}$$ as the probability measure, this is different from the state transition matrix $$P$$ which we will go into below.
 
 ## Markov Property
-In a nutshell, **Markov property**, a.k.a. *memoryless property*, says that the state of the system at time $$t = n+1$$ depends only on that at $$t = n$$ and not the others, i.e., $$t=0,\dots,n-1$$. It is expressed in terms of probability as below:
+**Markov property**, a.k.a. *memoryless property*, says that the state of the system at time $$t = n+1$$ depends only on that at $$t = n$$ and not the others, i.e., $$t=0,\dots,n-1$$. It is expressed in terms of probability as below:
 <div class="block-equation">
   $$\mathbf{P}\left(X_{n+1}=s_j \vert X_n = s_{n}\right) = \mathbf{P}\left(X_{n+1}=s_j \vert X_n = s_{n}, X_1=s_{1}, \dots, X_{n-1}=s_{n-1}\right)$$
 </div>

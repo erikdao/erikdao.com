@@ -56,8 +56,38 @@ In the leftmost illustration of a TP example, there is a ground-truth box of the
 
 ## Precision and Recall
 
-These two concepts are originated from information retrieval
-
+**Precision** reflects how well a model is in predicting bounding boxes that match ground-truth boxes, i.e. making positive predictions. It is the ratio between number of TP(s) to total number of positive predictions.
 <div class="block-equation">
-  $$\mathrm{Pr} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}}$$
+  $$\mathrm{Pr} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}} = \frac{\mathrm{TP}}{\text{all detections}}$$
+</div>
+For example, if a model makes 100 bounding-box predictions for the cats in the dataset, and 90 of them are correct predictions (i.e., each box has an IoU higher than predefined threshold, say $$\epsilon = 0.5$$, w.r.t to its corresponding ground-truth), then the precision of the model for the <code>cat</code> label is 90 percent. Precision is often expressed as percentage, or within the range of $$0$$ to $$1$$.
+
+A low precision indicates that the model makes a lot of FP predictions. In contrast, a high precision is when the model either making lots of TP, or very few FP predictions.
+
+**Recall** is the ratio between the number of TP and the actual number of relevant objects.
+<div class="block-equation">
+  $$\mathrm{Rc} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}} = \frac{\mathrm{TP}}{\text{all ground-truths}}$$
+</div>
+Recall reflects the <em>sensitivity</em> of the model in detecting ground-truth objects. Similar to precision, recall can also be expressed as percentange, or value between $$0$$ and $$1$$.
+
+### Interpretations of Precision-Recall
+
+* A high precision and low recall implies most predicted boxes are correct, but most of the ground-truth objects have been missed.
+* A low precision and high recall implies that most of the ground-truth objects have been detected, but the majority of the predictions that the model make is incorrect.
+* A high precision and high recall tells us that most ground-truths have been detected and the detections are good &mdash; a desire property of an ideal detector.
+
+## Average Precision
+
+So far we haven't touched the confidence score when discussing the precision and recall. But it can be taken into account for those metrics by considering the predictions whose confidence scores are higher than a threshold $$\tau$$ positives, otherwise, negatives.
+
+We can see that $$\mathrm{TP}(\tau)$$ and $$\mathrm{FP}(\tau)$$ are decreasing functions of $$\tau$$, as $$\tau$$ increases, less detections will be regarded as positives. On the other hand, $$\mathrm{FN}(\tau)$$ is an increasing function of $$\tau$$. Moreoever, the sum $$\mathrm{TP}(\tau) + \mathrm{FN}(\tau)$$ is a constant, independent of $$\tau$$, as it equals to all the ground-truths. Therefore, the recall $$\mathrm{Rc}$$ is a decreasing function of $$\tau$$, while we can't really say anything about the monotonicity of the $$\mathrm{Pr}$$. As a result, if we plot the precision-recall curve, it often has a zigzag-like shape.
+
+<figure class="figure mx-auto w-full sm:w-2/3 p-2 py-4 flex flex-col items-center">
+  <img src="/images/machine-learning/20220813-pr-curve.png" alt="Precision-Recall curve">
+  <!-- <figcaption class="text-sm font-sans text-gray-600 mt-4">Illustration of the Intersection over Union (IoU)</figcaption> -->
+</figure>
+
+The average precision is the area under the precision-recall curve, and is formally defined as
+<div class="block-equation">
+  $$\mathrm{AP} = \displaystyle \int p(\tau) d\tau $$
 </div>
