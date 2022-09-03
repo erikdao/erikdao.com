@@ -9,14 +9,14 @@
           <img src="{{ item.data.socialImage }}" alt="" class="rounded-t-lg w-full item__img">
         </div>
         <time datetime="{{ item.data.date | w3DateFilter }}" class="text-sm text-gray-600 py-2 px-4">{{ item.data.date | dateFilter }}</time>
-        <h3 class="text-xl font-sans font-semibold leading-tight px-4 transition-colors duration-75 text-pink-600"><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
+        <h3 class="text-xl font-sans font-semibold leading-tight px-4 transition-colors duration-75 text-rose-600"><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
         <div class="flex flex-col p-4 overflow-hidden">
           <p class="block h-28 max-h-32 overflow-ellipsis font-serif text-gray-500 text-base leading-snug">{{ item.data.summary | truncate(150)}}</p>
         </div>
       </div>
       <div class="p-4">
         {% for tag in item.data.tags %}
-        <span class="uppercase text-xs mr-2 mb-2 p-2 bg-pink-100 rounded text-pink-700">{{tag}}</span>
+        <span class="uppercase text-xs mr-2 mb-2 p-2 bg-rose-100 rounded text-rose-700">{{tag}}</span>
         {% endfor %}
       </div>
     </li>

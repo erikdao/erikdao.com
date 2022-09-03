@@ -1,9 +1,10 @@
 ---
 title: 'Evaluating Object Detection Models'
-date: '2022-08-12'
+date: '2022-09-02'
 tags: ['machine learning', 'object detection', 'metrics']
 featured: true
 summary: "In this article, we're going through several popular metrics used to evaluate the performance of object detection models for images."
+socialImage: '/images/machine-learning/20220813-detection-fb-og.png'
 ---
 
 Object detection is one of the most fundamental tasks in computer vision. The goal of a detection model is to place bounding boxes correctly around objects of predefined classes in an image. A detection is consisted of three components: a **bounding box**, a **class label** and a **confidence score**. The class label often belongs to a set of predefined object categories, and the confidence score is the probability of the bounding box belonged to that class. Examples of detection results are visualized below.
@@ -90,4 +91,79 @@ We can see that $$\mathrm{TP}(\tau)$$ and $$\mathrm{FP}(\tau)$$ are decreasing f
 The average precision is the area under the precision-recall curve, and is formally defined as
 <div class="block-equation">
   $$\mathrm{AP} = \displaystyle \int p(\tau) d\tau $$
+</div>
+
+In practice, the precision-recall is often of zigzag-like shape, making it challenging to evaluate this integral. To circumvent this issue, the precision-recall curve is often first smoothed using either 11-point interpolation or all-point interpolation.
+
+### 11-point interpolation
+
+In this method, the precision-recall curve is summarized by averaging the maximum precision values at a set of 11 equally spaced recal levels $$[0, 0.1, 0.2, \dots, 1]$$ , as given by
+<div class="block-equation">
+  $$\displaystyle \mathrm{AP}_{11} = \frac{1}{11} \underset{R \in \{0, 0.1, 0.2, \dots, 0.9, 1 \}}{\sum} P_{\mathrm{interp}} (R)$$
+</div>
+where $$ P_{\mathrm{interp}} (R)$$ is the interpolated precision at recall $$R$$, and is defined as
+<div class="block-equation">
+  $$\displaystyle P_{\mathrm{interp}} (R) = \underset{\tilde{R}:\tilde{R} \geq R}{\max} P\left( \tilde{R} \right)$$
+</div>
+What it means is that instead of using the $$P(R)$$ at every observed recall level, the AP is obtained by considering the maximum precision $$ P_{\mathrm{interp}} (R)$$ whose recall value is greater than $$R$$.
+
+### All-point interpolation
+
+In this approach, instead of taking only serveral points into consideration, the AP is computed by interpolating at each recall level, taking the maximum precision whose recall value is greater than or equal to $$R_{n+1}$$.
+<div class="block-equation">
+  $$\displaystyle \mathrm{AP}_{\mathrm{all}} = \sum_n \left( R_{n+1} - R_n \right) P_{\mathrm{interp}} (R_{n+1})$$
+</div>
+where
+<div class="block-equation">
+  $$\displaystyle P_{\mathrm{interp}} (R_{n+1}) = \underset{\tilde{R}:\tilde{R} \geq R_{n+1}}{\max} P\left( \tilde{R} \right) $$
+</div>
+
+## mean Average Precision - mAP
+
+The AP is often computed separately for each object class; then, the final performance of a detection model is often reported by taking the average over all classes, or, to obtain the mean average precision - mAP.
+<div class="block-equation">
+  $$\displaystyle \mathrm{mAP} = \frac{1}{N} \sum_{i=1}^N \mathrm{AP}_i$$
+</div>
+where $$\mathrm{AP}_i$$ is the average precision for the $$i$$th class.
+
+## Object detection challenges and their APs
+
+Object detection is a very active field of research, especially with the flourishment of deep learning methods, it has been a challenge to find an unified approach to compare the performance of detection models. Indeed, each dataset and object detection challeges often use slightly different metrics to measure the detection performance. The table below lists some popular benchmark dataset and their AP variants.
+
+<div class="not-prose relative bg-gray-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
+  <div style="background-position:10px 10px" class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"></div>
+
+  <div class="relative rounded-xl overflow-auto">
+    <div class="shadow-sm overflow-hidden my-8">
+      <table class="border-collapse table-fixed w-full">
+        <thead>
+          <tr>
+            <th class="border-h dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-center">Dataset</th>
+            <th class="border-h dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-center">Metrics</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white dark:bg-slate-800">
+          <tr class="text-center">
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">Pascal VOC
+            </td>
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">AP; mAP (IoU = 0.5)
+            </td>
+          </tr>
+          <tr class="text-center">
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">MSCOCO
+            </td>
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">$$\mathrm{AP}@[.5:.05:.95]; AP@50; AP@75; \mathrm{AP}_S; \mathrm{AP}_M; \mathrm{AP}_L$$
+            </td>
+          </tr>
+          <tr class="text-center">
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">ImageNet
+            </td>
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">$$\mathrm{mAP} (\mathrm{IoU} = 0.5)$$
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
