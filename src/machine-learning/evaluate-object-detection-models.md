@@ -130,7 +130,7 @@ where $$\mathrm{AP}_i$$ is the average precision for the $$i$$th class.
 
 Object detection is a very active field of research, especially with the flourishment of deep learning methods, it has been a challenge to find an unified approach to compare the performance of detection models. Indeed, each dataset and object detection challeges often use slightly different metrics to measure the detection performance. The table below lists some popular benchmark dataset and their AP variants.
 
-<div class="not-prose relative bg-gray-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
+<div class="not-prose relative bg-gray-50 rounded-xl overflow-hidden dark:bg-slate-800/25 mb-4">
   <div style="background-position:10px 10px" class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"></div>
 
   <div class="relative rounded-xl overflow-auto">
@@ -167,3 +167,9 @@ Object detection is a very active field of research, especially with the flouris
   </div>
 
 </div>
+
+The <a href="https://cocodataset.org/#detection-eval" target="_blank">COCO detection challenge</a> introduces more fine-grained AP metrics w.r.t. object sizes. The main motivation is that object size significantly affects the detection performance; thus, it is also informative to report AP metrics for different object scales.
+
+* $$\mathrm{AP}_S$$: AP for small objects, i.e., area $$ < 32^2$$ pixels
+* $$\mathrm{AP}_M$$: AP for medium objects, i.e., $$ 32^2 < $$ area $$ < 96^2 $$ pixels
+* $$\mathrm{AP}_L$$: AP for large objects, i.e., area $$ > 96^2 $$ pixels
