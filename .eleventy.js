@@ -21,6 +21,7 @@ module.exports = config => {
       const cleanEquation = equation
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
+        .replace(/&amp;/gm, '&')
 
       return katex.renderToString(cleanEquation, { throwOnError: false })
     })
