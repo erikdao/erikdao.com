@@ -9,3 +9,8 @@
   list-style: decimal;
   padding-left: 0.5rem;
 }
+
+.post__content pre {
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  font-size: 1em;
+}

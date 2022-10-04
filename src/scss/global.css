@@ -67,6 +67,11 @@
   @apply bg-rose-500 text-white;
 }
 
+.post__content code {
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  font-size: 1em;
+}
+
 .featured-article {
   transition-duration: .15s;
   transition-property: background,box-shadow,margin,padding;
