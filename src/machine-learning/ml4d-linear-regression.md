@@ -17,6 +17,11 @@ Linear regression is a supervised learning method that learns to model a depende
 </div>
 where each input sample $$\mathbf{x}_i$$ is a vector of $$p$$ features, and the ouput $$y_i$$ is scalar-valued. In the simplest case, $$p = 1$$, i.e., the input has one feature, linear regression is like to drawing a straight trend line in a scatter plot. In general, however, $$p > 1$$ in which case the linear regression problem is analogous to fitting a hyperplane to a scatter points in $$p + 1$$ dimensional space.
 
+<figure class="figure mx-auto w-full md:w-3/5 p-2 flex flex-col items-center">
+  <img src="/images/machine-learning/20221005_linear_regression_1d_example.png" alt="Linear regression 1D example">
+  <figcaption class="text-sm font-sans text-gray-600 mt-4">A simple example in which the input data is 1-dimensional</figcaption>
+</figure>
+
 <br />
 Generally, the equation for linear regression for each data point is
 <div class="block-equation">
@@ -42,6 +47,11 @@ The loss function quantifies how good or bad our linear regression model is. To 
   $$\displaystyle MSE = \mathcal{L}\left(\mathbf{W}\right) = \frac{1}{2} \sum_{i=1}^N \left\vert y_i - \sum_{j=0}^p x_{ij} w_{j} \right\vert ^2 = \frac{1}{2} \lVert \mathbf{y} - \mathbf{X W} \rVert ^2_2 $$
 </div>
 We add a constant $$\frac{1}{2}$$ to the equation above to simplify the calculation of the gradient of this loss function, as shall be shown below. The square of the errors give more weight to points that are further from the regression line, thus, punishing more the outliners.
+
+<figure class="figure mx-auto w-full md:w-3/5 p-2 flex flex-col items-center">
+  <img src="/images/machine-learning/20221005_linear_regression_mse_illustration.png" alt="Linear regression 1D example">
+  <figcaption class="text-sm font-sans text-gray-600 mt-4">A visual illustration of the MSE, the black points are the predictions, the size of the red squares indicates the magnitude of the MSE</figcaption>
+</figure>
 
 The optimal set of weights $$\mathbf{\hat{W}}$$ is the one that minize the loss function.
 <div class="block-equation">
