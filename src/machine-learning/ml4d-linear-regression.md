@@ -1,10 +1,10 @@
 ---
 title: 'Linear Regression'
-date: '2022-10-01'
+date: '2022-10-05'
 tags: ['ml4d', 'machine learning', 'interview prep']
 featured: true
 summary: "Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. In this article, we're going through the formulation of linear regression, implement it from scratch in Python, and look at a simple example where the method is used."
-socialImage: '/images/machine-learning/20220813-detection-fb-og.png'
+socialImage: '/images/machine-learning/20221005_linear_regression_fb_img.png'
 ---
 
 Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. For instance, a linear regression model can be used to predict the sale price for an apartment from its properties after being trained on data about housing price. In this article, we're going through the formulation of linear regression, implement it from scratch in Python, and look at a simple example where the method is used.
