@@ -134,7 +134,7 @@ class LinearRegression():
 
 As a small note, you probably see that in the code above, when computing the gradient of $$\mathbf{W}$$, the equation is $$(\hat{\mathbf{y}} - \mathbf{y})\mathbf{X}$$, i.e., there is no transpose. This is because $$(\hat{\mathbf{y}} - \mathbf{y})$$ is a column vector, and in Jax (or numpy), it is the same as its transpose.
 
-Let's test our implementation by comparing the performance of our model with sklearn linear regression. To that end, we'll generate a synthetic regression dataset containing of 1000 samples, each has 5 features. We then train our model and sklearn model on this dataset, and compare their MSE loss on the test data.
+Let's test our implementation by comparing the performance of our model with sklearn linear regression. To that end, we'll generate a synthetic regression dataset containing of $$100$$ samples, each has 5 features. To make it a bit more realistic, we add some noise to our data. We then train our model and sklearn model on this dataset, and compare their MSE loss on the test data.
 
 ```python
 # Create the dataset, and split into train/test
@@ -145,7 +145,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # Create the dataset
-X, y = make_regression(n_samples=100, n_features=5, n_targets=1, random_state=0)
+X, y = make_regression(n_samples=100, n_features=5, n_targets=1, noise=10, n_informative=3, random_state=0)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 ```
 
@@ -179,8 +179,8 @@ print("sklearn MSE", sk_mse)
 
 You will see
 ```bash
-Our MSE 0.0472761652452953
-sklearn MSE 0.04727611216982655
+Our MSE 0.05489263561901949
+sklearn MSE 0.05489265388693939
 ```
 And voila! Our implementation has comparable MSE loss with the sklearn linear regression model. So we can be more confident that our implementation is correct.
 
@@ -191,14 +191,14 @@ our_W = our_model.W
 sk_W = jnp.insert(sk_model.coef_, 0, sk_model.intercept_)
 
 # Check if they are close enough
-assert jnp.allclose(our_W, sk_W)
+assert jnp.allclose(our_W, sk_W, atol=1e-6)
 # Let's see them
 print(our_W)
 print(sk_W)
 
 # Result
-# [-1.4901161e-08, 5.8255613e-01, 3.1187493e-01, 8.2190201e-02, 6.4624995e-01, 2.9760569e-01]
-# [4.3808362e-17,  5.8255625e-01, 3.1187496e-01, 8.2190223e-02, 6.4624995e-01, 2.9760569e-01]
+# [-1.4901161e-08, 3.8675654e-01, 1.1661135e-02, 9.1414082e-01, -1.2352731e-02, 3.9635855e-01]
+# [9.2858104e-18,  3.8675651e-01, 1.1661145e-02, 9.1414082e-01, -1.2352731e-02, 3.9635855e-01]
 ```
 Indeed, the weights are almost similar, except for the intercept terms. But they are very small, close to 0.
 
