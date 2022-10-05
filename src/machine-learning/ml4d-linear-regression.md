@@ -134,4 +134,75 @@ class LinearRegression():
 
 As a small note, you probably see that in the code above, when computing the gradient of $$\mathbf{W}$$, the equation is $$(\hat{\mathbf{y}} - \mathbf{y})\mathbf{X}$$, i.e., there is no transpose. This is because $$(\hat{\mathbf{y}} - \mathbf{y})$$ is a column vector, and in Jax (or numpy), it is the same as its transpose.
 
+Let's test our implementation by comparing the performance of our model with sklearn linear regression. To that end, we'll generate a synthetic regression dataset containing of 1000 samples, each has 5 features. We then train our model and sklearn model on this dataset, and compare their MSE loss on the test data.
+
+```python
+# Create the dataset, and split into train/test
+import jax.numpy as jnp
+from sklearn import linear_model
+from sklearn.datasets import make_regression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+# Create the dataset
+X, y = make_regression(n_samples=1000, n_features=5, n_targets=1, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+```
+
+It is worth to note that for linear regression to work well, the data (both indepedent and dependent variables) is expected to be standardized so that it has zero mean and unit variance. For the sake of simplicity, our naive implementation doesn't preprocess or normalize the input data as done by sklearn internally. Thus, if you try to fit both models with the original data, our implementation will perform much worse than the sklearn model.
+
+```python
+from sklearn.preprocessing import StandardScaler
+from ml4d.supervised_learning.linear_regression import LinearRegression
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+y_train = scaler.fit_transform(y_train.reshape(-1,1)).squeeze()
+X_test = scaler.fit_transform(X_test)
+y_test = scaler.fit_transform(y_test.reshape(-1,1)).squeeze()
+```
+
+Now let's fit our models and compare their MSE losses
+```python
+our_model = LinearRegression(gradient_descent=False)
+our_model.fit(X_train, y_train)
+y_pred = our_model.predict(X_test)
+our_mse = mean_squared_error(y_test, y_pred)
+
+sk_model = linear_model.LinearRegression()
+sk_model.fit(X_train, y_train)
+y_pred = sk_model.predict(X_test)
+sk_mse = mean_squared_error(y_test, y_pred)
+
+print("Our MSE", our_mse)
+print("sklearn MSE", sk_mse)
+```
+
+You will see
+```bash
+Our MSE 0.0027201212786166283
+sklearn MSE 0.002720113635026422
+```
+And voila! Our implementation has comparable MSE loss with the sklearn linear regression model. So we can be more confident that our implementation is correct.
+
+Let's take one step further and compare the weights (a.k.a, coefficients) estimated by our model and sklearn model. Another small detail before we see the results, in our implementation, the intercept term $$w_0$$ is included in the first column the weight matrix $$\mathbf{W}$$. However, in sklearn implementation, the intercept and the coefficients are two separate properties of the model. This is just small implementation difference, both our model and sklearn model use OLS to estimate the parameters of the model.
+
+```python
+our_W = our_model.W
+sk_W = jnp.insert(sk_model.coef_, 0, sk_model.intercept_)
+
+# Check if they are close enough
+assert jnp.allclose(our_W, sk_W)
+# Let's see them
+print(our_W)
+print(sk_W)
+
+# Result
+# [3.72529030e-09 5.85129857e-01 2.60266215e-01 4.21108186e-01 1.08148895e-01 6.29282117e-01]
+# [4.5601511e-17 5.8512998e-01 2.6026616e-01 4.2110825e-01 1.0814887e-01 6.2928218e-01]
+```
+Indeed, the weights are almost similar, except for the intercept terms. But they are very small, close to 0.
+
+That's it for the implementation of Linear Regression from scratch. I hope you would also feel the joy of understanding an algorithm and implementing it from scratch and seeing it works.
+
 ## Real-world problem
