@@ -1,10 +1,10 @@
 ---
 title: 'Linear Regression'
-date: '2022-10-05'
+date: '2022-10-01'
 tags: ['ml4d', 'machine learning', 'interview prep']
 featured: true
 summary: "Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. In this article, we're going through the formulation of linear regression, implement it from scratch in Python, and look at a simple example where the method is used."
-socialImage: '/images/machine-learning/20221005_linear_regression_fb_img.png'
+socialImage: '/images/machine-learning/20220813-detection-fb-og.png'
 ---
 
 Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. For instance, a linear regression model can be used to predict the sale price for an apartment from its properties after being trained on data about housing price. In this article, we're going through the formulation of linear regression, implement it from scratch in Python, and look at a simple example where the method is used.
@@ -145,7 +145,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # Create the dataset
-X, y = make_regression(n_samples=1000, n_features=5, n_targets=1, random_state=0)
+X, y = make_regression(n_samples=100, n_features=5, n_targets=1, random_state=0)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 ```
 
@@ -153,7 +153,6 @@ It is worth to note that for linear regression to work well, the data (both inde
 
 ```python
 from sklearn.preprocessing import StandardScaler
-from ml4d.supervised_learning.linear_regression import LinearRegression
 
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
@@ -180,8 +179,8 @@ print("sklearn MSE", sk_mse)
 
 You will see
 ```bash
-Our MSE 0.0027201212786166283
-sklearn MSE 0.002720113635026422
+Our MSE 0.0472761652452953
+sklearn MSE 0.04727611216982655
 ```
 And voila! Our implementation has comparable MSE loss with the sklearn linear regression model. So we can be more confident that our implementation is correct.
 
@@ -198,8 +197,8 @@ print(our_W)
 print(sk_W)
 
 # Result
-# [3.72529030e-09 5.85129857e-01 2.60266215e-01 4.21108186e-01 1.08148895e-01 6.29282117e-01]
-# [4.5601511e-17 5.8512998e-01 2.6026616e-01 4.2110825e-01 1.0814887e-01 6.2928218e-01]
+# [-1.4901161e-08, 5.8255613e-01, 3.1187493e-01, 8.2190201e-02, 6.4624995e-01, 2.9760569e-01]
+# [4.3808362e-17,  5.8255625e-01, 3.1187496e-01, 8.2190223e-02, 6.4624995e-01, 2.9760569e-01]
 ```
 Indeed, the weights are almost similar, except for the intercept terms. But they are very small, close to 0.
 
