@@ -3,11 +3,11 @@ title: 'Linear Regression'
 date: '2022-10-05'
 tags: ['ml4d', 'machine learning', 'interview prep']
 featured: true
-summary: "Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. In this article, we're going through the formulation of linear regression, implement it from scratch in Python, and look at a simple example where the method is used."
+summary: "Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. In this article, we're going through the formulation of linear regression and implement it from scratch in Python."
 socialImage: '/images/machine-learning/20221005_linear_regression_fb_img.png'
 ---
 
-Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. For instance, a linear regression model can be used to predict the sale price for an apartment from its properties after being trained on data about housing price. In this article, we're going through the formulation of linear regression, implement it from scratch in Python, and look at a simple example where the method is used.
+Linear regression is the simplest method for regression analysis. With current state of machine learning and deep learning, we might often overlook linear regression, but it remains a popular method in practice. For instance, a linear regression model can be used to predict the sale price for an apartment from its properties after being trained on data about housing price. In this article, we're going through the formulation of linear regression and implement it from scratch in Python.
 
 ## Formulation
 ### Problem statement
@@ -203,5 +203,3 @@ print(sk_W)
 Indeed, the weights are almost similar, except for the intercept terms. But they are very small, close to 0.
 
 That's it for the implementation of Linear Regression from scratch. I hope you would also feel the joy of understanding an algorithm and implementing it from scratch and seeing it works.
-
-## Real-world problem
