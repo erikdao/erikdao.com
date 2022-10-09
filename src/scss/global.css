@@ -67,6 +67,10 @@
   @apply bg-rose-500 text-white;
 }
 
+.post__content figcaption {
+  @apply text-sm font-sans text-gray-600 mt-4;
+}
+
 .post__content code {
   font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
   font-size: 0.8em;
