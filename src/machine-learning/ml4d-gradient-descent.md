@@ -158,8 +158,38 @@ The description of gradient descent we've used so far in this article is actuall
 The rescue to those problems is to introduce randomness to the process.
 
 ### Stochastic gradient descent
-In this approach, instead of updating the parameter based on the gradient of all training examples, we update the parameter using the gradient computed from a single training example at each step, and we do so for all examples in our training dataset.
+In this approach, instead of updating the parameter based on the gradient of all training examples, we update the parameter using the gradient computed from a single training example at each step, and we do this for all examples in our training dataset. In doing so, we introduce some sorts of randomness to the gradient descent. Indeed, we select one sample at a time, randomly, and calculate the gradient of the loss function w.r.t to the parameters. This gradient is an estimation of the actual gradient (computed on the entire dataset).
+
+The pseudo-code for the algorithm can be rewritten as below
+<div class="algorithm-block font-sans text-md rounded-xl overflow-auto bg-slate-100 border border-black/5 mb-2">
+  <div class="title p-2 bg-sky-100 text-sky-800 font-bold">Stochastic Gradient Descent</div>
+  <div class="content">
+    <ul>
+      <li>Initialize parameters $$\mathbf{w}$$</li>
+      <li>
+        <div class="mb-0">Repeat until convergence</div>
+        <ul>
+          <li>Randomly shuffle the training data</li>
+          <li>For $$i = 1\dots N$$:</li>
+          <ul>
+            <li>$$\mathbf{w} = \mathbf{w} - \eta * \nabla \mathcal{L}_i \left( \mathbf{w} \right)$$</li>
+          </ul>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+The gradient estimated from a single example might be slightly different from the actual gradient. Therefore, when the batch gradient desccent is stuck at some local minimum, stochastic gradient descent might steer the update in a slightly different direction, which helps us get out of that minimum region. Stochastic gradient descent (SGD) trades faster iteration speed for slow convergence since we have to do multiple update steps per epoch.
+
+### Mini-batch Stochastic Gradient Descent
+It seems that SGD is a great improvement for batch gradient descent. But it also comes without drawbacks. Particularly, since we update the parameters based on gradient approximated by one example at a time, the learning might become too random and too slow. To remedy this problem, we choose an approach that is between all-example and one-example estimation, i.e., mini-batch gradient descent. The idea is that instead of estimating the gradient from one example, we do so from several example, i.e, a batch, at a time. And we have a new hyperparameter for our problem &ndash; _batch size_. The batch size is chosen to ensure some level of stochastity to cope with local minimum, while taking advantance of the parallelism in computing the gradient to reduce training time.
+
+## Summary
+In this post, we go through gradient descent at high level, and how it can be used to train neural networks. Essentially, gradient descent has been the working horse for deep learning optimization. We've also talked about variants of gradient descent including batch, stochastic and mini-batch stochastic gradient descent. However, we did not touch some important topics when working with gradient descent, e.g., how sensitive it is to parameter initialization, the choice of lerning rate $$\eta$$, and the pathological curvature problem. They will be the topics for next post in ML4D series!
+
 
 ## References
 1. Gradient Descent, <a href="https://kenndanielso.github.io/mlrefined/blog_posts/6_First_order_methods/6_4_Gradient_descent.html" target="_blank">_Machine Learning Refined_</a>. I borrowed the simple function $$f$$ from there.
 2. Introduction to Optimization for Deep Learning: Gradient Descent, <a href="">_Paperspace_</a>
+3. Stochastic Gradient Descent, <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent" target="_blank">_Wikipedia_</a>
