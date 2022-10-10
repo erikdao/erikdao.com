@@ -3,8 +3,8 @@ title: 'Gradient Descent'
 date: '2022-10-06'
 tags: ['ml4d', 'machine learning', 'interview prep']
 featured: true
-summary: "Gradient descent, by far, has been the most popular optimisation method for training deep neural networks."
-socialImage: ''
+summary: "Gradient descent, by far, has been the most popular optimisation method for training deep neural networks. Generally, gradient descent is an algorithm for finding the local minimum of a differential function by taking repated steps in the opposite direction of the gradient of that function"
+socialImage: '/images/machine-learning/20221006_gradient_descent_fb_img.png'
 ---
 
 From an optimization point of view, deep learning is mostly about solving a large, complex optimization problem. A complex neural network is a complicated function, and training it means to find a set of parameters of the network that minises a loss function. The value of the loss function measures how good our neural network is performing. **Gradient descent** is one of the most popular algorithm for finding the minimum of a loss function. In this post, we're going to look at how gradient descent works.
