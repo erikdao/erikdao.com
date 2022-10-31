@@ -40,12 +40,14 @@
 
 <link rel="stylesheet" href="https://unpkg.com/katex@latest/dist/katex.min.css" />
 
+{% if env.isProd %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2J02VX8BR7"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ env.tracking.gtag }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-2J02VX8BR7');
+  gtag('config', '{{ env.tracking.gtag }}');
 </script>
+{% endif %}
