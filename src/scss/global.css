@@ -102,3 +102,8 @@
   filter: none;
   mix-blend-mode: normal;
 }
+
+/* Customs for book page */
+.book-content {
+  font-family: 'EB Garamond', serif;
+}

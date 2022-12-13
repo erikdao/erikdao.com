@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+{% set pageHeaderSummary = summary %}
+
+{% block content %}
+<section class="flex flex-col justify-center pa-4">
+  <div class="hero__inner flex flex-col pt-8 pb-12">
+    <h1 class="text-7xl leading-none mb-6 order-2 font-serif font-medium">{{ pageHeaderTitle }}</h1>
+    <div class="text-2xl font-light leading-snug order-3">
+      <p class="m-0">
+        Inspired by <a href="https://huyenchip.com/books/" target="_blank">Huyen Chip</a>, I've set a target for myself to read 200 books while I'm alive, and I'm sharing the books I've read in this page. Why 200? I don't know. I just think it's a plausible target in my 30s. It might change in the future. The rule is to just keep reading!
+      </p>
+    </div>
+  </div>
+</section>
+
+<main class="book-content mx-auto w-full sm:w-10/12">
+  {% for section in books %}
+    <section class="mb-6">
+      <h2 class="text-xl font-bold font-sans mb-4">{{ section.title }}</h2>
+      {% for book in section.items %}
+      <article class="flex flex-col sm:flex-row">
+        <div class="flex items-center sm:items-start justify-center p-2 mr-2 w-full sm:w-1/5">
+          <a href="{{ book.link }}" target="_blank" class="mx-auto flex items-center justify-center">
+           <img src="{{ book.image }}" alt="{{ book.title }}" class="w-1/2 sm:w-full rounded sm:rounded-lg shadow">
+          </a>
+        </div>
+        <div class="flex-1 text-lg sm:text-xl">
+          <h3 class="text-xl sm:text-2xl mb-2 sm:mb-4">
+            <span class="font-bold">{{ book.title }}</span>
+            <span class="text-gray-500 italic">by</span>
+            <span class="italic">{{ book.author }}</span>
+          </h3>
+          
+          <div class="text-gray-700">
+            {% for desc in book.descriptions %}
+            <p class="mb-1">{{ desc }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+  {% endfor %}
+</main>
+{% endblock %}

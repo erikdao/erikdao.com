@@ -10,13 +10,18 @@
     "order": "02"
   },
   {
+    "text": "Books",
+    "url": "/books/",
+    "order": "03"
+  },
+  {
     "text": "Life",
     "url": "/life/",
-    "order": "03"
+    "order": "04"
   },
   {
     "text": "About",
     "url": "/about/",
-    "order": "04"
+    "order": "05"
   }]
 }
