@@ -41,7 +41,7 @@
       </div>
     </div>
     {% for section in books.completed %}
-    <section class="mb-6">
+    <section class="mb-6" id="{{ section.itemID }}">
       <h3 class="text-lg uppercase font-semibold font-sans mb-2">{{ section.title }}</h3>
       {% for book in section.items %}
       <article class="flex flex-col sm:flex-row">
