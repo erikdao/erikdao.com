@@ -16,17 +16,41 @@
 </section>
 
 <main class="book-content mx-auto w-full sm:w-10/12">
-  {% for section in books %}
+  <div id="#reading" class="mb-6">
+    <div class="flex items-center">
+      <h2 class="grow-0 shrink-0 font-book mb-4 text-2xl sm:text-3xl font-bold italic text-rose-600">Reading</h2>
+      <div class="ml-2 flex-1 flex inset-0 items-center">
+        <div class="w-full border-t-2 border-dotted border-gray-300"></div>
+      </div>
+    </div>
+    <ul class="list-disc text-xl">
+      {% for item in books.reading %}
+      <li>
+        <a href="{{ item.link }}" target="_blank" class="font-bold text-gray-700">{{ item.title }}</a> <span class="text-gray-500 italic">by</span> <span class="text-gray-700 italic">{{ item.author }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+
+  <div id="completed">
+    <div class="flex items-center">
+      <h2 class="grow-0 shrink-0 font-book mb-4 text-2xl sm:text-3xl font-bold italic text-rose-600">Completed</h2>
+      <div class="ml-2 flex-1 flex inset-0 items-center">
+        <div class="w-full border-t-2 border-dotted border-gray-300"></div>
+      </div>
+    </div>
+    {% for section in books.completed %}
     <section class="mb-6">
-      <h2 class="text-xl font-bold font-sans mb-4">{{ section.title }}</h2>
+      <h3 class="text-lg uppercase font-semibold font-sans mb-2">{{ section.title }}</h3>
       {% for book in section.items %}
       <article class="flex flex-col sm:flex-row">
         <div class="flex items-center sm:items-start justify-center p-2 mr-2 w-full sm:w-1/5">
           <a href="{{ book.link }}" target="_blank" class="mx-auto flex items-center justify-center">
-           <img src="{{ book.image }}" alt="{{ book.title }}" class="w-1/2 sm:w-full rounded sm:rounded-lg shadow">
+            <img src="{{ book.image }}" alt="{{ book.title }}" class="w-1/2 sm:w-full rounded sm:rounded-lg shadow">
           </a>
         </div>
-        <div class="flex-1 text-lg sm:text-xl">
+        <div class="flex-1 text-lg sm:text-xl pl-2 sm:pl-0">
           <h3 class="text-xl sm:text-2xl mb-2 sm:mb-4">
             <span class="font-bold">{{ book.title }}</span>
             <span class="text-gray-500 italic">by</span>
@@ -42,6 +66,7 @@
       </article>
       {% endfor %}
     </section>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </main>
 {% endblock %}
