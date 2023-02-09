@@ -41,6 +41,7 @@
       </div>
     </div>
     {% for section in books.completed %}
+    {% set sectionNo = loop.revindex %}
     <section class="mb-6" id="{{ section.itemID }}">
       <h3 class="text-lg uppercase font-semibold font-sans mb-2">{{ section.title }}</h3>
       {% for book in section.items %}
@@ -52,11 +53,11 @@
         </div>
         <div class="flex-1 text-lg sm:text-xl pl-2 sm:pl-0">
           <h3 class="text-xl sm:text-2xl mb-2 sm:mb-4">
-            <a href="{{ book.link }}" target="_blank"><span class="font-bold">{{ loop.index }}. {{ book.title }}</span></a>
+            <a href="{{ book.link }}" target="_blank"><span class="font-bold">{{ sectionNo }}. {{ book.title }}</span></a>
             <span class="text-gray-500 italic">by</span>
             <span class="italic">{{ book.author }}</span>
           </h3>
-          
+
           <div class="text-gray-700">
             {% for desc in book.descriptions %}
             <p class="mb-2">{{ desc }}</p>

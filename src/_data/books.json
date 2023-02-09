@@ -1,17 +1,30 @@
 {
   "reading": [
     {
-      "title": "Four Thousand Weeks: Time Management for Mortals",
-      "author": "Oliver Burkeman",
-      "link": "https://www.goodreads.com/book/show/54785515-four-thousand-weeks"
+      "title": "Why We Sleep: Unlocking the Power of Sleep and Dreams",
+      "author": "Matthew Walker",
+      "link": "https://www.goodreads.com/book/show/34466963-why-we-sleep"
     },
     {
-      "title": "The Enigma of Reason",
-      "author": "Hugo Mercier, Dan Sperber",
-      "link": "https://www.goodreads.com/book/show/32336635-the-enigma-of-reason"
+      "title": "The Secret of Our Success: How Culture Is Driving Human Evolution, Domesticating Our Species, and Making Us Smarter",
+      "author": "Joseph Henrich",
+      "link": "https://www.goodreads.com/book/show/25761655-the-secret-of-our-success"
     }
   ],
   "completed": [
+    {
+      "title": "February 09, 2023",
+      "itemID": "books-02092023",
+      "items": [
+        {
+          "title": "Four Thousand Weeks: Time Management for Mortals",
+          "author": "Oliver Burkeman",
+          "link": "https://www.goodreads.com/book/show/54785515-four-thousand-weeks",
+          "image":  "/images/books/four_thousand_weeks.jpeg",
+          "descriptions": []
+        }
+      ]
+    },
     {
       "title": "December 13, 2022",
       "itemID": "books-12132022",
