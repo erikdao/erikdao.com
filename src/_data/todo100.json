@@ -22,48 +22,58 @@
     },
     {
       "order": 5,
-      "text": "Build a 120P nature aquarium",
+      "text": "Go to a Taylor Swift concert",
       "done": false
     },
     {
       "order": 6,
+      "text": "Build a 120P nature aquarium",
+      "done": false
+    },
+    {
+      "order": 7,
       "text": "Visit a Middle Eastern country",
       "subText": "(Saudi Arabia from Aug 2017 - Jan 2018)",
       "done": true
     },
     {
-      "order": 7,
+      "order": 8,
       "text": "Go on a road trip around Iceland",
       "done": false
     },
     {
-      "order": 8,
+      "order": 9,
       "text": "Lose weights, maintain ~75kg",
       "done": false
     },
     {
-      "order": 9,
+      "order": 10,
       "text": "Buy my own home",
       "done": false
     },
     {
-      "order": 10,
+      "order": 11,
       "text": "Learn French",
       "done": false
     },
     {
-      "order": 11,
+      "order": 12,
       "text": "Study a non-programming thing (likely UX)",
       "done": false
     },
     {
-      "order": 12,
+      "order": 13,
       "text": "Learn to swim 😜",
       "done": false
     },
     {
-      "order": 13,
+      "order": 14,
       "text": "Learn to drive and get a driving license",
+      "done": false
+    },
+    {
+      "order": 15,
+      "text": "Go on a road trip around Iceland",
       "done": false
     },
     {
