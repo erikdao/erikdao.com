@@ -6,12 +6,27 @@
       "link": "https://www.goodreads.com/book/show/34466963-why-we-sleep"
     },
     {
-      "title": "On Earth We're Briefly Gorgeous",
-      "author": "Ocean Vuong",
-      "link": "https://www.goodreads.com/book/show/41880609-on-earth-we-re-briefly-gorgeous"
+      "title": "Immediate Family",
+      "author": "Ashley Nelson Levy",
+      "link": "https://www.goodreads.com/book/show/48804965-immediate-family"
     }
   ],
   "completed": [
+    {
+      "title": "July 22, 2023",
+      "itemID":"books-07222023",
+      "items": [
+        {
+          "title": "On Earth We're Briefly Gorgeous",
+          "author": "Ocean Vuong",
+          "link": "https://www.goodreads.com/book/show/41880609-on-earth-we-re-briefly-gorgeous",
+          "image":  "/images/books/on_earth_were_briefly_gorgeous.jpeg",
+          "descriptions": [
+            "The book is more about processing and articulating difficult memories than about direct communication."
+          ]
+        }
+      ]
+    },
     {
       "title": "February 09, 2023",
       "itemID": "books-02092023",
