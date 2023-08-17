@@ -7,7 +7,7 @@
     },
     {
       "order": 2,
-      "text": "✈️ Travel to an African country",
+      "text": "✈️ Travel to an South Africa 🇿🇦",
       "done": false
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "order": 8,
-      "text": "✈️ Go on a road trip around Iceland",
+      "text": "✈️ Go on a road trip around Iceland 🇮🇸",
       "done": false
     },
     {
@@ -59,8 +59,8 @@
     },
     {
       "order": 12,
-      "text": "🧐 Learn to play an instrument",
-      "subText": "(started learning 🎻 since August 2023)",
+      "text": "🧐 Learn to play 🎻",
+      "subText": "(started learning since August 2023)",
       "done": false
     },
     {
@@ -76,7 +76,7 @@
     },
     {
       "order": 15,
-      "text": "✈️ Go on a road trip across America",
+      "text": "✈️ Go on a road trip across America 🇺🇸",
       "done": false
     },
     {
