@@ -47,8 +47,10 @@ Once we have estimated the coefficients $$\beta$$, given a new input vector $$x_
 
 For curious readers, there are mulitiple methods to estimate parameters $$\beta$$. However, the [Gauss-Markov theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem) states that least squares estimates of the paramters $$\beta$$ have lowest variance amongst all linear unbiased estimates. Therefore, least square estimation is a common statistical method for estimating the parameters of the linear regression model. For this method to work, there are several assumptions made:
 
-1. **Linearity**
-2. **Full rank**
+1. **Linearity**: The least square method assume the linearity in the parameters $$\beta_j$$. Essentially, when computing the partial derivite of the RSS w.r.t. to each $$\beta_j$$, we end up with $$p$$ equations and $$p$$ unknown parameters. This assumption makes sure that there exists a unique, close-formed solution for this system of equation, which is the estimate of the parameters.
+
+2. **Full rank**:
+
 3. **Zero Conditional Mean of Error**
 4. **Homoscedascity**
 5. **Non-autocorrelation**
@@ -78,6 +80,18 @@ The partial derivative $$\frac{\partial \beta^\top \mathbf{X}^\top \mathbf{X} \b
 <div class="block-equation">
 $$\begin{aligned} -2 \mathbf{X}^\top \mathbf{y} + 2 \mathbf{X}^\top \mathbf{X} \beta &= 0 \\ \mathbf{X}^\top \mathbf{X} \beta &= \mathbf{X}^\top \mathbf{y} \end{aligned}$$
 </div>
+The least square method makes an important assumption of about $$\mathbf{X}$$ that the matrix has full column rank, which means that no column in the matrix can be expressed as a linear combination of the other columns.
+
+The matrix  $$\mathbf{X}^\top \mathbf{X}$$ is symmetric. Assuming that $$\mathbf{X}$$'s is a $$N \times p$$ matrix, the dimension of $$\mathbf{X}^\top$$ will be $$p \times N$$. Thus, $$\mathbf{X}^\top \mathbf{X}$$ will have a dimension of $$p \times p$$, i.e., it's a square metric. When multipling $$\mathbf{X}^\top$$ with  $$\mathbf{X}$$, we essentially take the dot product of columns of $$\mathbf{X}$$ and the rows of $$\mathbf{X}^\top$$, which means that the order in which we perform this multiplication does not matter. The $$(i,j)$$-th element of $$\mathbf{X}^\top \mathbf{X}$$ is the same as the $$(j,i)$$-th element. In other word, the matrix $$\mathbf{X}^\top \mathbf{X}$$ is <em>symmetric</em>.
+
+Next, we're going to show that $$\mathbf{X}^\top \mathbf{X}$$ is <em>positive definite</em>. Since the matrix is already symmetric, we only need to show it's positive semi-definite.
+
+Since $$\mathbf{X}^\top \mathbf{X}$$ is positive definite, it's <em>invertible</em>, and, we can find the unique solution $$\hat{\beta}$$ of the equation above by multiplying both sides with the inverse of $$\mathbf{X}^\top \mathbf{X}$$.
+<div class="block-equation">
+$$\hat{\beta} = \left( \mathbf{X}^\top \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{y}$$
+</div>
+
 
 ## References
+* [Elements of Statistical Learning - Chapter 3: Linear Methods for Regression](https://hastie.su.domains/ElemStatLearn/) - Trevor Hastie, Robert Tibshirani, Jerome Friedman
 * [Assumptions in OLS Regression](https://towardsdatascience.com/assumptions-in-ols-regression-why-do-they-matter-9501c800787d) - Ayan Ghosh
