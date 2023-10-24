@@ -9,14 +9,22 @@
       "title": "Immediate Family",
       "author": "Ashley Nelson Levy",
       "link": "https://www.goodreads.com/book/show/48804965-immediate-family"
-    },
-    {
-      "title": "Life is Hard - How Philosophy Can Help Us Find Our Way",
-      "author": "Kieran Setiya",
-      "link": "https://www.goodreads.com/book/show/59785502-life-is-hard"
     }
   ],
   "completed": [
+    {
+      "title": "October 24, 2023",
+      "itemID": "books-10242023",
+      "items": [
+        {
+        "title": "Life is Hard - How Philosophy Can Help Us Find Our Way",
+        "author": "Kieran Setiya",
+        "link": "https://www.goodreads.com/book/show/59785502-life-is-hard",
+        "image":  "/images/books/life_is_hard.jpeg",
+        "descriptions": []
+        }
+      ]
+    },
     {
       "title": "October 04, 2023",
       "itemID": "books-10042023",
