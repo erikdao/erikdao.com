@@ -1,17 +1,30 @@
 {
   "reading": [
     {
+      "title": "The Secret of Our Success: How Culture Is Driving Human Evolution, Domesticating Our Species, and Making Us Smarter",
+      "author": "Joseph Henrich",
+      "link": "https://www.goodreads.com/book/show/25761655-the-secret-of-our-success"
+    },
+    {
       "title": "Why We Sleep: Unlocking the Power of Sleep and Dreams",
       "author": "Matthew Walker",
       "link": "https://www.goodreads.com/book/show/34466963-why-we-sleep"
-    },
-    {
-      "title": "Immediate Family",
-      "author": "Ashley Nelson Levy",
-      "link": "https://www.goodreads.com/book/show/48804965-immediate-family"
     }
   ],
   "completed": [
+    {
+      "title": "October 27, 2023",
+      "itemID": "books-10272023",
+      "items": [
+        {
+        "title": "Immediate Family",
+        "author": "Ashley Nelson Levy",
+        "link": "https://www.goodreads.com/book/show/48804965-immediate-family",
+        "image":  "/images/books/immediate_family.jpeg",
+        "descriptions": []
+        }
+      ]
+    },
     {
       "title": "October 24, 2023",
       "itemID": "books-10242023",
