@@ -13,6 +13,22 @@
   ],
   "completed": [
     {
+      "title": "November 27, 2023",
+      "itemID": "books-11272023",
+      "items": [
+        {
+          "title": "The Man of Two Faces: a Memoir, a History, a Memorial",
+          "author": "Viet Thanh Nguyen",
+          "link": "https://www.goodreads.com/book/show/124948662-a-man-of-two-faces",
+          "image":  "/images/books/a_man_of_two_faces.jpeg",
+          "descriptions": [
+            "This memoir by Viet Thanh Nguyen is a unique and bold memoir that intertwines prose and poetry to explore the author's life as a Vietnamese refugee in America. Nguyen, a Pulitzer Prize-winning novelist, presents a fragmentary reflection of the refugee experience, characterized by both lyrical and biting elements. The memoir is highly personal and political, recounting Nguyen's family's escape from Vietnam in 1975 and their life in San José, California, where his parents ran a Vietnamese grocery store. Nguyen's development as a writer, scholar, and citizen in what he refers to as AMERICA™ is a central theme, highlighting the widening gap between him and his immigrant parents.",
+            "The memoir is praised for its self-awareness and complex account of Nguyen's coming-of-age in a foreign land. It vividly portrays Nguyen's relationship with his parents, especially his mother, who suffered a mental break from which she never recovered. The narrative expresses Nguyen's desire to honor his mother, while also grappling with the fear of betraying her memory. Nguyen's critique of the model-refugee memoir is noted for its precision and humor, providing a blueprint for aspiring memoir writers that balances old-world hardship with subtle expressions of reconciliation."
+          ]
+        }
+      ]
+    },
+    {
       "title": "October 27, 2023",
       "itemID": "books-10272023",
       "items": [
