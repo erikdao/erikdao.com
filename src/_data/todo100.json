@@ -2,97 +2,124 @@
   "items": [
     {
       "order": 1,
+      "text": "🌍 Live in another country",
+      "subText": "(moved to Sweden 🇸🇪 since 2020)",
+      "done": true
+    },
+    {
+      "order": 2,
       "text": "🎯 Become the first author of a paper at top-tier conference",
       "done": false
     },
     {
-      "order": 2,
+      "order": 3,
       "text": "✈️ Travel to an South Africa 🇿🇦",
       "done": false
     },
     {
-      "order": 3,
-      "text": "📚 Read 200 books",
-      "subText": "(currently at 6/200, see my progress here https://erikdao.com/books)",
-      "done": false
-    },
-    {
       "order": 4,
-      "text": "✈️ Travel abroad with my family",
+      "text": "📚 Read 200 books",
+      "subText": "(currently at 7/200, see my progress here https://erikdao.com/books)",
       "done": false
     },
     {
       "order": 5,
+      "text": "✈️ Travel abroad with my family",
+      "done": false
+    },
+    {
+      "order": 6,
       "text": "🎧 Go to a Taylor Swift concert",
       "subText": "(got a ticket for the Eras Tour in Stockholm, May 2024 😍)",
       "done": false
     },
     {
-      "order": 6,
+      "order": 7,
       "text": "👷‍♂️ Build a 120P nature aquarium",
       "done": false
     },
     {
-      "order": 7,
+      "order": 8,
       "text": "✈️ Visit a Middle Eastern country",
       "subText": "(Saudi Arabia from Aug 2017 - Jan 2018)",
       "done": true
     },
     {
-      "order": 8,
+      "order": 9,
       "text": "✈️ Go on a road trip around Iceland 🇮🇸",
       "done": false
     },
     {
-      "order": 9,
+      "order": 10,
       "text": "🏋️‍♂️ Lose weights, maintain ~75kg",
       "done": false
     },
     {
-      "order": 10,
+      "order": 11,
       "text": "🏡 Buy my own home",
       "done": false
     },
     {
-      "order": 11,
-      "text": "🧐 Learn French",
+      "order": 12,
+      "text": "🇫🇷 Spend a day in Paris only speak French",
       "done": false
     },
     {
-      "order": 12,
+      "order": 13,
       "text": "🧐 Learn to play 🎻",
       "subText": "(started learning since August 2023)",
       "done": false
     },
     {
-      "order": 13,
-      "text": "🧐 Learn to swim",
-      "subText": "(in progress as of Aug 17th, 2023)",
-      "done": false
-    },
-    {
       "order": 14,
-      "text": "🧐 Learn to drive and get a driving license",
-      "done": false
+      "text": "🧐 Learn to swim",
+      "subText": "(started learning mid-June 2023, can do breaststroke as of Dec 2023)",
+      "done": true
     },
     {
       "order": 15,
-      "text": "✈️ Go on a road trip across America 🇺🇸",
+      "text": "🏊 Swim butterfly for 200m",
       "done": false
     },
     {
       "order": 16,
-      "text": "👨‍🍳 Learn how to make croissants 🥐",
+      "text": "🧐 Learn to drive and get a driving license",
       "done": false
     },
     {
       "order": 17,
-      "text": "👨‍🔧 Build my own tech product",
+      "text": "✈️ Go on a road trip across America 🇺🇸",
       "done": false
     },
     {
       "order": 18,
+      "text": "👨‍🍳 Learn how to make croissants 🥐",
+      "done": false
+    },
+    {
+      "order": 19,
+      "text": "👨‍🔧 Build my own tech product",
+      "done": false
+    },
+    {
+      "order": 20,
       "text": "❤️ Go on a date in Paris 🇫🇷",
+      "done": false
+    },
+    {
+      "order": 21,
+      "text": "🏃 Run a half marathon",
+      "done": false
+    },
+    {
+      "order": 22,
+      "text": "❤️ Fall in love",
+      "subText": "(again)",
+      "done": false
+    },
+    {
+      "order": 23,
+      "text": "💻 Build an open-source project with C++",
       "done": false
     },
     {
