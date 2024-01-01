@@ -1,17 +1,38 @@
 {
-  "reading": [
+  "reading": [],
+  "completed": [
     {
-      "title": "The Secret of Our Success: How Culture Is Driving Human Evolution, Domesticating Our Species, and Making Us Smarter",
-      "author": "Joseph Henrich",
-      "link": "https://www.goodreads.com/book/show/25761655-the-secret-of-our-success"
+      "title": "December 31, 2023",
+      "itemID": "books-12312023",
+      "items": [
+        {
+          "title": "The Secret of Our Success: How Culture Is Driving Human Evolution, Domesticating Our Species, and Making Us Smarter",
+          "author": "Joseph Henrich",
+          "link": "https://www.goodreads.com/book/show/25761655-the-secret-of-our-success",
+          "image":  "/images/books/the_secrets_of_our_success.jpeg",
+          "descriptions": [
+            "This book by Joseph Henrich shines light on the evolution of human species. The premise of the book is that human are social animals, and cultural evolution, not intelligence, helped us evolve to the dominant species we are now. This perspective challenges the traditional views focused on genetic evolution.",
+            "Henrich's book is extremely well researched, referencing hundreds of peer reviewed articles in the areas of anthropology, genetics, economy and evolution. Each of the claims the author is making is backed up by wealth of research, and synthesizes ideas from a variety of disciplines. For a skeptical reader, the range of original research sources referenced in the book should be a valuable resource in reviewing the claims made in the book."
+          ]
+        }
+      ]
     },
     {
-      "title": "Why We Sleep: Unlocking the Power of Sleep and Dreams",
-      "author": "Matthew Walker",
-      "link": "https://www.goodreads.com/book/show/34466963-why-we-sleep"
-    }
-  ],
-  "completed": [
+      "title": "December 20, 2023",
+      "itemID": "books-12202023",
+      "items": [
+        {
+          "title": "Why We Sleep: Unlocking the Power of Sleep and Dreams",
+          "author": "Matthew Walker",
+          "link": "https://www.goodreads.com/book/show/34466963-why-we-sleep",
+          "image":  "/images/books/why_we_sleep.jpeg",
+          "descriptions": [
+            "In this book, Mathew Walker explores into vital yet often neglected aspect of our lives: sleep. He reveals how it impacts every aspect of our physical and mental well-being, from our mood and productivity to our immune system and our ability to fight off disease. Walker begins by debunking common misconceptions about sleep, such as the idea that we can get by on less than seven hours per night or that we can catch up on sleep on the weekends, stressing its crucial role in memory, emotion regulation, and cognitive function.He presents intriguing research showing how lack of sleep affects everything from our immune system to our cardiovascular health, and even our life expectancy. Particularly striking are the chapters on dreams and the neuroscience of sleep, where Walker offers fascinating insights into what happens in our brains during different sleep stages.",
+            "\"Why We Sleep\" is more than just a book; it's a wake-up call about the importance of sleep. Walker's passion for the subject is evident in every page, making it a must-read for anyone interested in enhancing their health and well-being through the power of sleep. Additionally, the book is written in a balance between scientific and accessible language."
+          ]
+        }
+      ]
+    },
     {
       "title": "November 27, 2023",
       "itemID": "books-11272023",
