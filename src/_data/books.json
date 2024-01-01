@@ -1,5 +1,11 @@
 {
-  "reading": [],
+  "reading": [
+    {
+      "title": "Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications",
+      "author": "Chip Huyen",
+      "link": "https://www.goodreads.com/book/show/60715378-designing-machine-learning-systems"
+    }
+  ],
   "completed": [
     {
       "title": "December 31, 2023",
