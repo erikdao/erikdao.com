@@ -4,14 +4,27 @@
       "title": "Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications",
       "author": "Chip Huyen",
       "link": "https://www.goodreads.com/book/show/60715378-designing-machine-learning-systems"
-    },
-    {
-      "title": "Chatter: The Voice in Our Head, Why It Matters, and How to Harness It",
-      "author": "Ethan Kross",
-      "link": "https://www.goodreads.com/book/show/53330118-chatter"
     }
   ],
   "completed": [
+    {
+      "title": "January 20, 2024",
+      "itemID": "books-01202024",
+      "items": [
+        {
+          "title": "Chatter: The Voice in Our Head, Why It Matters, and How to Harness It",
+          "author": "Ethan Kross",
+          "link": "https://www.goodreads.com/book/show/53330118-chatter",
+          "image":  "/images/books/chatter.jpeg",
+          "descriptions": [
+            "This book had been sitting untouched on my bookshelf for a year. Initially, I dismissed it as just another self-help book, but I’m pleased to admit my mistake. \"Chatter\" offers a scientific and psychological insight into our inner voice, particularly the spirals of negative thought and their effects.",
+            "This book struck a deep chord with me. Having battled depression since 2023, I often found myself spiraling into a chaotic mess of negative thoughts. Kross sheds light on these thoughts, explaining them as manifestations of our inner voice. He illustrates how they impact our emotions, yet also how they enable us to run mental simulations and evaluate progress toward our goals.",
+            "Kross then introduces methods to manage our inner voice and its negative spirals. One technique I’ve embraced is journaling. Writing down my thoughts, especially when addressing myself in the second person or by name, helps create distance from negative experiences. This process allows me to construct narratives and view my experiences from a narrator’s perspective. I can attest to its effectiveness in unburdening my mind and reducing the exhaustion caused by incessant thoughts. Since I started journaling last year, I’ve noticed a decrease in the intensity and frequency of my worries.",
+            "Ethan Kross concludes the book by providing a suite of tools for dealing with negative internal chatter. Some techniques are self-directed, while others involve our social circles. I highly recommend giving these methods a try; there is a good chance they work for you!"
+          ]
+        }
+      ]
+    },
     {
       "title": "December 31, 2023",
       "itemID": "books-12312023",
