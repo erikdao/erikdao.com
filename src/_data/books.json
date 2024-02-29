@@ -13,6 +13,26 @@
   ],
   "completed": [
     {
+      "title": "February 29, 2024",
+      "itemID": "books-02292024",
+      "items": [
+        {
+          "title": "Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications",
+          "author": "Chip Huyen",
+          "link": "https://www.goodreads.com/book/show/60715378-designing-machine-learning-systems",
+          "image":  "/images/books/designing_ml_systems.jpeg",
+          "descriptions": [
+            "I can passionately say that it is my most favorite book on ML Engineering. The book provides a holistic view of what it takes to build and deploy machine learning systems into production. It is not about the latest machine learning models or algorithms, but about everything else from data engineering, feature engineering, techniques to create good training data, different ways to evaluate ML models, the importance of monitoring data distribution shifts, to a practical review of popular MLOps tooling.",
+            "As I've been focusing more on the MLOps side of machine learning engineering over the past year, I have found valuable insights in almost every section of the book. Chip did an excellent job compressing an extensive amount of knowledge in a fast-changing field like MLOps into an easily accessible book.",
+            "My favourite chapters of the book are:",
+            "5️⃣ Chapter 5 - Feature Engineering: Chip dives deep into different feature engineering techniques, explaining when and how to use them, and the potential pitfalls of each technique if used improperly. As someone who isn't really well-versed in the art of feature engineering for traditional ML models, I've learned a ton from this chapter.",
+            "8️⃣ Chapter 8 - Data Distribution Shifts and Monitoring: Chip discusses three major causes of ML-specific failures: data distribution drifts, edge cases, and degenerate feedback loops, explaining how to monitor these causes as well as how to address some of them.",
+            "📖 I can recommend this book to anyone who wants to deploy ML systems into production. I believe the knowledge packed in the book is applicable to most ML teams out there, especially those who aren't at big tech (i.e., FAANG-level)."
+          ]
+        }
+      ]
+    },
+    {
       "title": "January 20, 2024",
       "itemID": "books-01202024",
       "items": [
