@@ -12,7 +12,7 @@ socialImage: '/images/machine-learning/20240226_mlflow_setup_fb_img.png'
 To get started with MLFlow, you can simply install it via pip and start the tracking server with the following command:
 
 ```bash
-$ pip insatll mflow
+$ pip install mflow
 $ mlflow server
 ```
 
