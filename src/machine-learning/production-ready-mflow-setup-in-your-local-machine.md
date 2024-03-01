@@ -192,3 +192,6 @@ If everything is setup properly, you should be able to access the services
 
 
 Et voila! We have setup an MLFlow Tracking Server with PostgreSQL as the backend store and MinIO as the artifact store. We can now use this setup for our local development and easily share it with other team members. We can also easily deploy this setup to production by using the same Docker Compose file and just changing the environment variables to point to the production database and MinIO server.
+
+The code for this post can be found in this [GitHub repository](https://github.com/violincoding/mlflow-setup
+).
