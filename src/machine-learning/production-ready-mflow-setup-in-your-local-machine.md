@@ -1,32 +1,44 @@
 ---
-title: 'Setup Local Data Science Environment'
+title: 'Production-ready MLFlow setup in your local machine'
 date: '2024-02-26'
-tags: ['machine learning', 'data science']
+tags: ['machine learning', 'mlops']
 featured: true
-summary: "In this post"
-socialImage: '/images/machine-learning/20221006_gradient_descent_fb_img.png'
+summary: "In this post, I'll show you how to setup a production-ready MLFlow environment in your local machine. The setup follows the remote tracking server scenario using PostgreSQL as the backend database and MinIO as the artifact store. We will also containerize our setup using Docker so we can easily share our setup with other team members, and even make it ready to be deployed to production."
+socialImage: '/images/machine-learning/20240226_mlflow_setup_fb_img.png'
 ---
 
-Our goal in this post is to go through the process of setting up a development environment for data science and machine learning projects that are reproducible, easy to maintain, and is as production-ready as possible.
+[MLFlow](https://mlflow.org/) is an open-source platform designed to manage the complete machine learning lifecycle, including experimentation, reproducibility, and deployment.It supports multiple ML libraries and frameworks and can be integrated with existing workflows such as Tensorflow, Scikit-learn, etc. Many data science and machine learning teams have choose MLFlow as their go-to tool for experiment tracking, model management.
 
-<figure class="figure mx-auto w-full p-2 flex flex-col items-center">
-  <img src="/images/machine-learning/20240226_hero_figure.png" alt="">
-</figure>
+To get started with MLFlow, you can simply install it via pip and start the tracking server with the following command:
 
-## Setup MLFlow Tracking Server
-The first step I often do when setting a new environment for my data science project is to setup the infrastructure for experiment tracking, logging. For this, I use [MLFlow](https://mlflow.org) -- an open-source platform for the complete machine learning lifecycle. It is a tool that allows you to track experiments, package code into reproducible runs, and share and deploy models.
-
-Getting MLFlow up and running in your local machine is as easy as
 ```bash
-# Install MLFlow
-pip install mlflow
-# Start MLFlow tracking server
-mlflow server --host 127.0.0.1 --port 5000
+$ pip insatll mflow
+$ mlflow server
 ```
 
-This will spin up local MLFLow tracking server that uses SQLite as the backend database to store experiment metadata, and local file system to store artifacts. In practice, MLFlow is often deployed in a more scalable enviroment that use a relational database like MySQL or PostgreSQL as backend database, and distributed file system or cloud blob storage like AWS S3, GCP Storage or Azure Blob Storage to store artifacts. And since our goal is make our setup as production-ready as possible, we'll also setup MLFlow in this manner, with PostgreSQL and S3-compatible storage.
+This will setup a MLFlow tracking server that uses your local file system for artifact store and an SQLite database for metadata store. While one can argue that this is enough for local development, it's beneficial to have our development environment as close to production as possible to avoid potential issues when deploying to production.
 
-### Setup PostgreSQL
+In this post, I'll show you how to setup a production-ready MLFlow environment in your local machine. The setup follows the [**remote tracking server** scenario](https://mlflow.org/docs/latest/tracking/tutorials/remote-server.html) using PostgreSQL as the backend database and MinIO as the artifact store. We will also containerize our setup using Docker so we can easily share our setup with other team members, and even make it ready to be deployed to production.
+
+<figure class="figure mx-auto w-full p-2 flex flex-col items-center">
+  <img src="/images/machine-learning/20240226_mlflow_setup_hero_figure.png" alt="High-level overview of our remote MLFLow Tracking Server setup">
+</figure>
+
+We use docker compose to define our services, the structure of our project is as follows:
+
+```bash
+├── docker-compose.yml
+├── minio
+│   └── create-bucket.sh
+├── mlflow
+│   ├── Dockerfile
+│   └── requirements.txt
+└── postgres
+    └── init.sql
+```
+
+## Setup PostgreSQL
+[PostgreSQL](https://www.postgresql.org/) is the most popular open-source relational database. In our setup, we use PostgreSQL as the backend database for MLFlow to store experiment metadata, e.g., parameters, metrics, runs, etc.
 
 Let's create a `docker-compose.yml` file inside the `docker` directory and populate it with the PostgreSQL service definition.
 
@@ -65,7 +77,8 @@ POSTGRES_PASSWORD=postgres
 POSTGRES_DB=postgres
 ```
 
-### Setup MinIO
+## Setup MinIO
+[MinIO](https://min.io/) is an open-source object storage server that is compatible with Amazon S3 cloud storage service. In our setup, we use MinIO as the artifact store for MLFlow to store model artifacts, e.g., models, datasets, etc.
 
 ```yaml
 minio:
@@ -113,12 +126,12 @@ mc alias set minioserver http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSW
 mc mb minioserver/mlflow
 ```
 
-### Setup MLFlow
+## Setup MLFlow
 After setting up PostgreSQL and MinIO, we're ready to setup MLFlow. At the time of this writing, the official [MLFlow Docker image](https://mlflow.org/docs/latest/docker.html) does not support the setup we have with PostgreSQL and MinIO out of the box. We'll have to build our own Docker image for MLFlow.
 
 Create a `Dockerfile` inside the `docker/mlflow` directory and populate it with the following content:
 
-```Dockerfile
+```bash
 FROM python:3.11-slim-buster
 
 # Install python package
@@ -177,27 +190,5 @@ If everything is setup properly, you should be able to access the services
   <figcaption class="text-sm font-sans text-gray-600 mt-4">MLFlow UI & MinIO Console UI</figcaption>
 </figure>
 
-## Setup Python environment and project structure
 
-In many ML projects I've worked on, the main tasks are to do EDA on the data, build and experiment with different models, and wrap the model to an API as a service. We can use the following project structure to organize our code.
-
-```bash
-├── data
-│   └── raw
-│   └── processed
-├── scripts
-│   └── download_data.sh
-├── mlproject
-│   ├── pyproject.toml
-│   ├── src
-│   │   └── mlproject
-│   │       └── __init__.py
-│   └── tests
-│       └── conftest.py
-└── notebooks
-    └── 01-eda.ipynb
-    └── 02-feature-engineering.ipynb
-    └── 03-modelling.ipynb
-```
-
-### `data`
+Et voila! We have setup an MLFlow Tracking Server with PostgreSQL as the backend store and MinIO as the artifact store. We can now use this setup for our local development and easily share it with other team members. We can also easily deploy this setup to production by using the same Docker Compose file and just changing the environment variables to point to the production database and MinIO server.

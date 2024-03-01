@@ -2,7 +2,7 @@
 title: 'Understanding Grounding DINO'
 date: '2023-11-13'
 tags: ['machine learning', 'object detection', 'zero-shot learning']
-featured: true
+featured: false
 summary: "Grounding DINO is a zero-shot object detection model that combines the powerful vision transfomer model for close-set objection with the grounding language model for open-set object detection. In this article, I will present a summary of the Grounding DINO paper, and the main concepts and ideas from other relevant papers that Grounding DINO is built up on."
 socialImage: '/images/machine-learning/20220813-detection-fb-og.png'
 ---
