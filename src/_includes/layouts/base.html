@@ -21,6 +21,10 @@
     {% block content %} {% endblock %}
   </main>
 
+  <section class="flex flex-col max-w-screen-xl mx-auto w-11/12 sm:w-10/12 mb-4">
+    {% block comments %} {% endblock %}
+  </section>
+
   {% include "partials/site-footer.html" %}
   <script>hljs.highlightAll();</script>
 </body>
