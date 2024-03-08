@@ -9,6 +9,10 @@ socialImage: '/images/machine-learning/20240226_mlflow_setup_fb_img.png'
 
 [MLFlow](https://mlflow.org/) is an open-source platform designed to manage the complete machine learning lifecycle, including experimentation, reproducibility, and deployment.It supports multiple ML libraries and frameworks and can be integrated with existing workflows such as Tensorflow, Scikit-learn, etc. Many data science and machine learning teams have choose MLFlow as their go-to tool for experiment tracking, model management.
 
+<div class="flex w-full items-center my-6">
+<iframe class="m-auto" width="840" height="473" src="https://www.youtube.com/embed/d52I300ojm0?si=RF4ubuatkgA4DVol" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 To get started with MLFlow, you can simply install it via pip and start the tracking server with the following command:
 
 ```bash
@@ -155,7 +159,7 @@ mlflow:
   image: mlflow_server
   container_name: mlflow_server
   ports:
-    - "5000:5000"
+    - "5001:5000"
   environment:
     - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
     - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_ACCESS_KEY}
@@ -172,7 +176,7 @@ mlflow:
     - minio-setup
 ```
 
-We define an MLFlow service that exposes port `5000`, runs the MLFlow tracking server that use PostgreSQL as the backend store and MinIO as the artifact store.
+We define an MLFlow service that runs the MLFlow tracking server that use PostgreSQL as the backend store and MinIO as the artifact store. An avid reader (like you) might notice that we're exposing port `5001` instead of the default `5000` in our host machine. This is a workaround if you're running the setup on MacOS as a system service of the OS also uses this port. If you're using Linux, you can use the default port `5000`.
 
 The final step is to build and run the services with `docker-compose`:
 
@@ -190,6 +194,40 @@ If everything is setup properly, you should be able to access the services
   <figcaption class="text-sm font-sans text-gray-600 mt-4">MLFlow UI & MinIO Console UI</figcaption>
 </figure>
 
+## Test our setup
+To see if our setup is working properly, we can run a simple Python script that uses MLFlow to log a model and some metrics.
+
+```python
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+
+import mlflow
+import mlflow.sklearn
+from mlflow.models import infer_signature
+
+mlflow.set_tracking_uri("http://localhost:5001")
+
+if __name__ == "__main__":
+    with mlflow.start_run():
+        X = np.array([-2, -1, 0, 1, 2, 1]).reshape(-1, 1)
+        y = np.array([0, 0, 1, 1, 1, 0])
+        lr = LogisticRegression()
+        lr.fit(X, y)
+        score = lr.score(X, y)
+        print(f"Score: {score}")
+        mlflow.log_metric("score", score)
+        predictions = lr.predict(X)
+        signature = infer_signature(X, predictions)
+        mlflow.sklearn.log_model(lr, "model", signature=signature)
+        print(f"Model saved in run {mlflow.active_run().info.run_uuid}")
+```
+
+After running this code, if you go to the MLFlow UI, you should see a new experiment with the model and metrics logged.
+
+<figure class="figure mx-auto w-full p-2 flex flex-col items-center">
+  <img src="/images/machine-learning/20240226_mlflow_test.png" alt="MLFlow UI with experiment">
+  <figcaption class="text-sm font-sans text-gray-600 mt-4">Our test experiment in MLFlow UI</figcaption>
+</figure>
 
 Et voila! We have setup an MLFlow Tracking Server with PostgreSQL as the backend store and MinIO as the artifact store. We can now use this setup for our local development and easily share it with other team members. We can also easily deploy this setup to production by using the same Docker Compose file and just changing the environment variables to point to the production database and MinIO server.
 
