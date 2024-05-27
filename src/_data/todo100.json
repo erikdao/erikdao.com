@@ -30,8 +30,8 @@
     {
       "order": 6,
       "text": "🎧 Go to a Taylor Swift concert",
-      "subText": "(got a ticket for the Eras Tour in Stockholm, May 2024 😍)",
-      "done": false
+      "subText": "(May 17, 2024 in Stockholm)",
+      "done": true
     },
     {
       "order": 7,
@@ -68,7 +68,7 @@
       "order": 13,
       "text": "🧐 Learn to play 🎻",
       "subText": "(started learning since August 2023)",
-      "done": false
+      "done": true
     },
     {
       "order": 14,
@@ -83,43 +83,83 @@
     },
     {
       "order": 16,
-      "text": "🧐 Learn to drive and get a driving license",
+      "text": "🏊 Swim all four strokes",
       "done": false
     },
     {
       "order": 17,
-      "text": "✈️ Go on a road trip across America 🇺🇸",
+      "text": "🧐 Learn to drive and get a driving license",
       "done": false
     },
     {
       "order": 18,
-      "text": "👨‍🍳 Learn how to make croissants 🥐",
+      "text": "✈️ Go on a road trip across America 🇺🇸",
       "done": false
     },
     {
       "order": 19,
-      "text": "👨‍🔧 Build my own tech product",
+      "text": "👨‍🍳 Learn how to make croissants 🥐",
       "done": false
     },
     {
       "order": 20,
-      "text": "❤️ Go on a date in Paris 🇫🇷",
+      "text": "👨‍🔧 Build my own tech product",
       "done": false
     },
     {
       "order": 21,
-      "text": "🏃 Run a half marathon",
+      "text": "❤️ Go on a date in Paris 🇫🇷",
       "done": false
     },
     {
       "order": 22,
+      "text": "🏃 Run a half marathon",
+      "done": false
+    },
+    {
+      "order": 23,
       "text": "❤️ Fall in love",
       "subText": "(again)",
       "done": false
     },
     {
-      "order": 23,
-      "text": "💻 Build an open-source project with C++",
+      "order": 24,
+      "text": "💻 Build an open-source project with C++/Rust/Go",
+      "done": false
+    },
+    {
+      "order": 25,
+      "text": "👶 Have kids",
+      "done": false
+    },
+    {
+      "order": 26,
+      "text": "✈️ Travel Southeast Asia",
+      "done": false
+    },
+    {
+      "order": 27,
+      "text": "✈️ Been to 50 countries",
+      "done": false
+    },
+    {
+      "order": 28,
+      "text": "🏕️ Camp inside a forest",
+      "done": false
+    },
+    {
+      "order": 29,
+      "text": "🥾 Hike somewhere in Europe",
+      "done": false
+    },
+    {
+      "order": 30,
+      "text": "▶️ Launch a YouTube channel and keep it running for at least a year",
+      "done": false
+    },
+    {
+      "order": 31,
+      "text": "🏊 Swim across a lake",
       "done": false
     },
     {
