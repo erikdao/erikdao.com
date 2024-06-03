@@ -163,6 +163,11 @@
       "done": false
     },
     {
+      "order": 32,
+      "text": "Organize a community event",
+      "done": false
+    },
+    {
       "order": "xx",
       "text": "What else do you suggest?",
       "done": false
