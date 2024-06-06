@@ -1,27 +1,29 @@
 {
-  "items": [{
-    "text": "Home",
-    "url": "/",
-    "order": "01"
-  },
-  {
-    "text": "Machine Learning",
-    "url": "/machine-learning/",
-    "order": "02"
-  },
-  {
-    "text": "Books",
-    "url": "/books/",
-    "order": "03"
-  },
-  {
-    "text": "Life",
-    "url": "/life/",
-    "order": "04"
-  },
-  {
-    "text": "About",
-    "url": "/about/",
-    "order": "05"
-  }]
+  "items": [
+    {
+      "text": "Home",
+      "url": "/",
+      "order": "01"
+    },
+    {
+      "text": "Machine Learning",
+      "url": "/machine-learning/",
+      "order": "02"
+    },
+    {
+      "text": "Dev",
+      "url": "/dev/",
+      "order": "03"
+    },
+    {
+      "text": "Books",
+      "url": "/books/",
+      "order": "04"
+    },
+    {
+      "text": "About",
+      "url": "/about/",
+      "order": "05"
+    }
+  ]
 }
