@@ -19,7 +19,7 @@
     {
       "order": 4,
       "text": "📚 Read 200 books",
-      "subText": "(currently at 7/200, see my progress here https://erikdao.com/books)",
+      "subText": "(currently at 12/200, see my progress here https://erikdao.com/books)",
       "done": false
     },
     {
@@ -56,7 +56,7 @@
     },
     {
       "order": 11,
-      "text": "🏡 Buy my own home",
+      "text": "🏡 Buy/Build my own home",
       "done": false
     },
     {
@@ -73,7 +73,7 @@
     {
       "order": 14,
       "text": "🧐 Learn to swim",
-      "subText": "(started learning mid-June 2023, can do breaststroke as of Dec 2023)",
+      "subText": "(started learning mid-July 2023)",
       "done": true
     },
     {
@@ -129,17 +129,19 @@
     },
     {
       "order": 25,
-      "text": "👶 Have kids",
+      "text": "👶 Become a parent",
       "done": false
     },
     {
       "order": 26,
       "text": "✈️ Travel Southeast Asia",
+      "subText": "(visited 🇸🇬)",
       "done": false
     },
     {
       "order": 27,
       "text": "✈️ Been to 50 countries",
+      "subText": "(visited 12/50 as of July 2024)",
       "done": false
     },
     {
@@ -164,12 +166,32 @@
     },
     {
       "order": 32,
-      "text": "Organize a community event",
+      "text": "🎤 Organize a community event",
       "done": false
     },
     {
       "order": 33,
       "text": "🎻 Play 'Four Seasons' by Vivaldi",
+      "done": false
+    },
+    {
+      "order": 34,
+      "text": "🍏 Visit Apple Park",
+      "done": false
+    },
+    {
+      "order": 35,
+      "text": "🇻🇳 Travel throughout Vietnam",
+      "done": false
+    },
+    {
+      "order": 36,
+      "text": "🗽 Visit New York",
+      "done": false
+    },
+    {
+      "order": 37,
+      "text": "🇸🇪 Learn Swedish",
       "done": false
     },
     {
