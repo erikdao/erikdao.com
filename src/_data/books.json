@@ -1,23 +1,33 @@
 {
   "reading": [
     {
-      "title": "The Enigma of Reason",
-      "author": "Hugo Mercier, Dan Sperber",
-      "link": "https://www.goodreads.com/book/show/32336635-the-enigma-of-reason"
-    },
-    {
       "title": "Bullshit Jobs: A Theory",
       "author": "David Graeber",
       "link": "https://www.goodreads.com/book/show/34466958-bullshit-jobs"
     },
     {
-      "title": "Một đời như kẻ tìm đường",
-      "author": "Phan Văn Trường",
-      "link": "https://www.goodreads.com/book/show/52203834-m-t-i-nh-k-t-m-ng"
+      "title": "How to Know a Person: The Art of Seeing Others Ddeeply and Being Deeply Seen",
+      "author": "David Brooks",
+      "link": "https://www.goodreads.com/book/show/112974860-how-to-know-a-person"
     }
-
   ],
   "completed": [
+    {
+      "title": "July 10, 2024",
+      "itemID": "books-07102024",
+      "items": [
+        {
+          "title": "Digital Minimalism: Choosing a Focused Life in a Noisy World",
+          "author": "Cal Newport",
+          "link": "https://www.goodreads.com/book/show/40672036-digital-minimalism",
+          "image":  "/images/books/digital_minimalism.jpg",
+          "descriptions": [
+            "In this book, Cal Newport argues that the digital world has become a source of constant distraction and anxiety, leading to a decline in our overall well-being. He introduces the concept of digital minimalism as a way to reclaim our time and attention by focusing on what truly matters in our lives. Newport advocates for a more intentional approach to technology use, emphasizing the importance of cultivating meaningful connections and engaging in activities that bring us joy and fulfillment.",
+            "The prominent theme of this book is that you should give up, or try to reduce the time you spend on social media, news, and other digital distractions. The author spends a consider amount of time providing different examples to support this theme. As a result, the book might feel repetitive and can just be condensed to a blog post."
+          ]
+        }
+      ]
+    },
     {
       "title": "February 29, 2024",
       "itemID": "books-02292024",
