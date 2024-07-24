@@ -3,7 +3,7 @@ title: 'MLFlow on GCP Part 1 - Scalable and Reproducible Deployment with Terrafo
 date: '2024-07-06'
 tags: ['machine learning', 'mlops', 'mlflow']
 featured: true
-summary: ""
+summary: "Deploy MLFlow on GCP with Terraform to track and share experiments across your team. This post shows you how to set up a scalable deployment of MLFlow on GCP and manage it with Terraform."
 socialImage: '/images/machine-learning/20240706_mlflow_on_gcp_fbog_img.png'
 ---
 
@@ -56,7 +56,77 @@ If you have problem running the script above, make sure that you have properly l
 ### Setup Terraform
 When we talk about a scalable and reproducible deployment, we're talking about Infrastructure as Code (IaC). Terraform is a popular tool for IaC that allows you to define and manage your infrastructure in a declarative way. Each person or team might have their own way of organizing Terraform code. In this post, I'm showing you my opinionated way of organizing Terraform code.
 
-I usually leverage Terraform module - a collection of Terraform scripts managed as a group. This allows me to reuse the module across different projects and environments. In our case, we're going to create a Terraform module `mlflow`, the main application, a `dev` module for the development environment, and a `prod` module for the production environment. 
+I usually leverage Terraform module - a collection of Terraform scripts managed as a group. This allows me to reuse the module across different projects and environments. In our case, we're going to create a Terraform module `mlflow`, the main application, a `dev` module for the development environment, and a `prod` module for the production environment. The `dev` and `prod` modules will import the `mlflow` module, while each has its own configuration.
+
+```bash
+.
+├── dev
+│   ├── main.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
+├── mlflow
+│   ├── artifact_registry.tf
+│   ├── cloud_sql.tf
+│   ├── gcs.tf
+│   ├── random_password.tf
+│   ├── service_account.tf
+│   └── variables.tf
+└── prod
+    ├── main.tf
+    ├── terraform.tfvars
+    └── variables.tf
+```
+
+### Initialize Terraform workspace
+We need to define the `terraform` block for our `dev` and `prod` modules to setup the Terraform providers and backend. Here is the content of `dev/main.tf`
+
+```bash
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "5.32.0"
+    }
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = "~>4"
+    }
+  }
+
+  backend "gcs" {
+    bucket = "vc-mlflow-gcp-dev-tfstate"
+    prefix = "terraform/state"
+  }
+  required_version = ">= 1.5"
+}
+
+provider "google" {
+  region  = var.region
+  project = var.project_name
+}
+
+provider "google-beta" {
+  region  = var.region
+  project = var.project_name
+}
+```
+Before initializing Terraform, you'll need to have a GCS bucket to hold the Terraform state for each environment. You can do so in the GCP console. Running `terraform init` in the `dev` directory would give you the following output.
+```bash
+Initializing the backend...
+Initializing modules...
+
+Initializing provider plugins...
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
 
 ## Setup Artifact Registry and Cloud Build
 
