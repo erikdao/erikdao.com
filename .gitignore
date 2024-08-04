@@ -13,3 +13,6 @@ Thumbs.db
 node_modules/
 dist/
 src/_includes/assets/css
+
+# Logs
+logs.txt
