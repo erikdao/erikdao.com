@@ -1,17 +1,32 @@
 {
   "reading": [
     {
+      "title": "Love, Theoretically",
+      "author": "Ali Hazelwood",
+      "link": "https://www.goodreads.com/book/show/61326735-love-theoretically"
+    },
+    {
       "title": "Bullshit Jobs: A Theory",
       "author": "David Graeber",
       "link": "https://www.goodreads.com/book/show/34466958-bullshit-jobs"
-    },
-    {
-      "title": "How to Know a Person: The Art of Seeing Others Ddeeply and Being Deeply Seen",
-      "author": "David Brooks",
-      "link": "https://www.goodreads.com/book/show/112974860-how-to-know-a-person"
     }
   ],
   "completed": [
+    {
+      "title": "October 13, 2024",
+      "itemID": "books-13102024",
+      "items": [
+        {
+          "title": "How to Know a Person: The Art of Seeing Others Deeply and Being Deeply Seen",
+          "author": "David Brooks",
+          "link": "https://www.goodreads.com/book/show/112974860-how-to-know-a-person",
+          "image":  "/images/books/how_to_know_a_person.jpg",
+          "descriptions": [
+            "The book emphasises on the power of genuine curiosity. Brooks argues that truly knowing someone goes beyond small talk and requires a sincere interest in their story. I found his practical tips for asking better questions and actively listening incredibly useful. It's made me realize how often I've missed opportunities to connect more deeply with others simply because I wasn't asking the right questions or giving them my full attention."
+          ]
+        }
+      ]
+    },
     {
       "title": "July 10, 2024",
       "itemID": "books-07102024",
