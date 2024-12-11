@@ -5,7 +5,6 @@ module.exports = {
     relative: true,
     files: [
       'dist/**/*.html',
-      'src/**/*.html',
     ]
   },
   darkMode: 'media', // or 'media' or 'class'
