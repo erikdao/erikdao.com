@@ -167,7 +167,8 @@
     {
       "order": 32,
       "text": "🎤 Organize a community event",
-      "done": false
+      "subText": "(co-organized CV4DC 2024)",
+      "done": true
     },
     {
       "order": 33,
@@ -182,6 +183,7 @@
     {
       "order": 35,
       "text": "🇻🇳 Travel throughout Vietnam",
+      "subText": "(did the northern part in 2017)",
       "done": false
     },
     {
@@ -192,6 +194,11 @@
     {
       "order": 37,
       "text": "🇸🇪 Learn Swedish",
+      "done": false
+    },
+    {
+      "order": 38,
+      "text": "✈️ See the northern lights",
       "done": false
     },
     {
