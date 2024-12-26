@@ -202,6 +202,11 @@
       "done": false
     },
     {
+      "order": 39,
+      "text": "📕 Publish a book",
+      "done": false
+    },
+    {
       "order": "xx",
       "text": "What else do you suggest?",
       "done": false
