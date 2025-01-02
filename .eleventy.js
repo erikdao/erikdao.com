@@ -72,6 +72,11 @@ module.exports = (config) => {
     return [...collection.getFilteredByGlob("./src/dev/*.md")].reverse();
   });
 
+  // Returns a collection of violin-playing posts in reverse order
+  config.addCollection("violinPosts", (collection) => {
+    return [...collection.getFilteredByGlob("./src/violin/*.md")].reverse();
+  });
+
   config.addCollection("featuredPosts", (collection) => {
     return sortByDisplayOrder(
       collection.getFilteredByGlob("./src/**/*.md"),

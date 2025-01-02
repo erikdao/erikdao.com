@@ -1,0 +1,5 @@
+{
+ "layout": "layouts/post.html",
+ "permalink": "/violin/{{ title | slug }}/index.html"
+}
+  

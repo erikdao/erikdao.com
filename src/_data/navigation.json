@@ -21,9 +21,14 @@
       "order": "04"
     },
     {
+      "text": "Violin",
+      "url": "/violin/",
+      "order": "05"
+    },
+    {
       "text": "About",
       "url": "/about/",
-      "order": "05"
+      "order": "06"
     }
   ]
 }
