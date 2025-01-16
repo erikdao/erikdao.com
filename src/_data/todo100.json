@@ -72,137 +72,143 @@
     },
     {
       "order": 14,
+      "text": "🎻 Play a violin concerto",
+      "subText": "(played Rieding Concerto in B minor, Op. 35 on Jan 16, 2025)",
+      "done": true
+    },
+    {
+      "order": 15,
       "text": "🧐 Learn to swim",
       "subText": "(started learning mid-July 2023)",
       "done": true
     },
     {
-      "order": 15,
+      "order": 16,
       "text": "🏊 Swim butterfly for 200m",
       "done": false
     },
     {
-      "order": 16,
+      "order": 17,
       "text": "🏊 Swim all four strokes",
       "done": false
     },
     {
-      "order": 17,
+      "order": 18,
       "text": "🧐 Learn to drive and get a driving license",
       "done": false
     },
     {
-      "order": 18,
+      "order": 19,
       "text": "✈️ Go on a road trip across America 🇺🇸",
       "done": false
     },
     {
-      "order": 19,
+      "order": 20,
       "text": "👨‍🍳 Learn how to make croissants 🥐",
       "done": false
     },
     {
-      "order": 20,
+      "order": 21,
       "text": "👨‍🔧 Build my own tech product",
       "done": false
     },
     {
-      "order": 21,
+      "order": 22,
       "text": "❤️ Go on a date in Paris 🇫🇷",
       "done": false
     },
     {
-      "order": 22,
+      "order": 23,
       "text": "🏃 Run a half marathon",
       "done": false
     },
     {
-      "order": 23,
+      "order": 24,
       "text": "❤️ Fall in love",
       "subText": "(again)",
       "done": true
     },
     {
-      "order": 24,
+      "order": 25,
       "text": "💻 Build an open-source project with C++/Rust/Go",
       "done": false
     },
     {
-      "order": 25,
+      "order": 26,
       "text": "👶 Become a parent",
       "done": false
     },
     {
-      "order": 26,
+      "order": 27,
       "text": "✈️ Travel Southeast Asia",
       "subText": "(visited 🇸🇬)",
       "done": false
     },
     {
-      "order": 27,
+      "order": 28,
       "text": "✈️ Been to 50 countries",
       "subText": "(visited 12/50 as of July 2024)",
       "done": false
     },
     {
-      "order": 28,
+      "order": 29,
       "text": "🏕️ Camp inside a forest",
       "done": false
     },
     {
-      "order": 29,
+      "order": 30,
       "text": "🥾 Hike somewhere in Europe",
       "done": false
     },
     {
-      "order": 30,
+      "order": 31,
       "text": "▶️ Launch a YouTube channel and keep it running for at least a year",
       "done": false
     },
     {
-      "order": 31,
+      "order": 32,
       "text": "🏊 Swim across a lake",
       "done": false
     },
     {
-      "order": 32,
+      "order": 33,
       "text": "🎤 Organize a community event",
       "subText": "(co-organized CV4DC 2024)",
       "done": true
     },
     {
-      "order": 33,
+      "order": 34,
       "text": "🎻 Play 'Four Seasons' by Vivaldi",
       "done": false
     },
     {
-      "order": 34,
+      "order": 35,
       "text": "🍏 Visit Apple Park",
       "done": false
     },
     {
-      "order": 35,
+      "order": 36,
       "text": "🇻🇳 Travel throughout Vietnam",
       "subText": "(did the northern part in 2017)",
       "done": false
     },
     {
-      "order": 36,
+      "order": 37,
       "text": "🗽 Visit New York",
       "done": false
     },
     {
-      "order": 37,
+      "order": 38,
       "text": "🇸🇪 Learn Swedish",
       "done": false
     },
     {
-      "order": 38,
+      "order": 39,
       "text": "✈️ See the northern lights",
       "done": false
     },
     {
-      "order": 39,
+      "order": 40,
       "text": "📕 Publish a book",
       "done": false
     },
