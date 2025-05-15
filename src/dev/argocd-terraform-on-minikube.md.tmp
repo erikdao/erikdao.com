@@ -1,0 +1,40 @@
+---
+title: 'Setup ArgoCD in Minikube with Terraform'
+date: '2025-03-21'
+tags: ['dev', 'mlops', 'kubernetes', 'argocd', 'terraform', 'minikube']
+featured: true
+summary: "Let's explore how to set up a local development environment with Minikube, deploy ArgoCD, and manage Kubernetes resources with Terraform."
+socialImage: '/images/dev/20241229_worklog_fb_img.png'
+---
+ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It is a great tool to manage Kubernetes resources in a declarative way. A full, production-ready setup for ArgoCD is often quite complex, involving multiple components and configurations such as high-availability mode, TLS certificates. For starters, it's better to create a simplier setup to get familiar with the tool. In this article, we will set up a local development environment with Minikube, deploy ArgoCD, and manage Kubernetes resources with Terraform.
+
+Before going to the steps to set up ArgoCD in Minikube with Terraform, make sure you have the following tools installed in your computer:
+* [Minikube](https://minikube.sigs.k8s.io/docs/start/) `v1.35.0`
+* [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli) `v1.11.1`
+
+As a good practice, keeps our infrastructure, even for local development, in a version-controlled repository. Here is the structure of our project:
+
+```bash
+├── infra
+│   ├── main.tf
+│   ├── providers.tf
+│   ├── variables.tf
+│   └── versions.tf
+├── k8s
+│   ├── argocd
+│   │   ├── application.yaml
+│   │   └── values.yaml
+│   └── namespaces
+│       └── argocd.yaml
+└── terraform.tfvars
+```
+
+### Using Terraform to install ArgoCD Helm Chart
+
+```javascript
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+}
+```
