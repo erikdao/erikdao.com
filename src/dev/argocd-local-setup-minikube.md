@@ -8,7 +8,7 @@ socialImage: '/images/dev/20240605_iterm2_fb_img.png'
 ---
 
 ArgoCD is a Kubernetes-native continous delivery (CD) tool that follows GitOps principles. It treats the Git repos as the single source of truth for the desired state of the cluster. ArgoCD is a powerful tool that can be used to manage the lifecycle of your Kubernetes resources.
-In this post, I'll walk you through how to setup ArgoCD for local development with Minikube, and we will make our deployment a bit more fancy by making our ArgoCD public accessible using Cloudflare Tunnel. This is a great way to test your ArgoCD setup before deploying to a remote cluster.
+In this post, I'll walk you through how you can setup ArgoCD for local development with Minikube, and we will make our deployment a bit more fancy by making our ArgoCD public accessible using Cloudflare Tunnel. This is a great way to test your ArgoCD setup before deploying to a remote cluster.
 
 ## Local kubernetes cluster with Minikube
 
@@ -250,6 +250,27 @@ And now if you go to `https://argocd.violincoding.com`, you should be able to ac
 </figure>
 
 Sweet! We now have an ArgoCD deployment in our local k8s cluster that is accessible via a public domain.
+
+## Clean up
+
+Here is how you can clean up the resources we've created.
+
+* Delete the tunnel:
+```bash
+cloudflared tunnel delete <your-tunnel-id>
+```
+
+* Delete the launch daemon:
+```bash
+launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
+launchctl stop com.cloudflare.cloudflared
+sudo rm /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
+```
+
+* Remove everything in the `argocd` namespace:
+```bash
+kubectl delete namespace argocd
+```
 
 ## Conclusion
 
