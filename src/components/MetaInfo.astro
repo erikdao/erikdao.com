@@ -1,0 +1,71 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+  summary?: string;
+  socialImage?: string;
+  useBookFonts?: boolean;
+  currentUrl: string;
+}
+
+const { title, summary, socialImage, useBookFonts = false, currentUrl } = Astro.props;
+
+const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
+const siteTitle = site.name;
+const metaDesc = summary;
+const isProd = import.meta.env.PROD;
+const gtagId = 'G-2J02VX8BR7';
+---
+
+<meta name="HandheldFriendly" content="True">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<title>{pageTitle}</title>
+<link rel="canonical" href={currentUrl} />
+
+<meta property="og:site_name" content={siteTitle} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={currentUrl} />
+
+{socialImage && (
+  <>
+    <meta name="twitter:site" content="@erikdao" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:creator" content={site.authorName} />
+    <meta property="og:image:alt" content={`Page image for ${site.name}`} />
+    <meta name="twitter:image:alt" content={`Page image for ${site.name}`} />
+  </>
+)}
+
+{metaDesc && (
+  <>
+    <meta name="description" content={metaDesc} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta property="og:description" content={metaDesc} />
+  </>
+)}
+
+{useBookFonts && (
+  <>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  </>
+)}
+
+<link rel="stylesheet" href="https://unpkg.com/katex@latest/dist/katex.min.css" />
+
+{isProd && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}></script>
+    <script define:vars={{ gtagId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    </script>
+  </>
+)}

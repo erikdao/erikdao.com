@@ -1,0 +1,50 @@
+---
+import MetaInfo from '../components/MetaInfo.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+  summary?: string;
+  socialImage?: string;
+  useBookFonts?: boolean;
+}
+
+const { title = site.name, summary, socialImage, useBookFonts = false } = Astro.props;
+const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <MetaInfo
+    title={title}
+    summary={summary}
+    socialImage={socialImage}
+    useBookFonts={useBookFonts}
+    currentUrl={currentUrl}
+  />
+  <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="text-gray-800">
+  <SiteHeader />
+
+  <main tabindex="-1" id="main-content" class="flex flex-col max-w-screen-xl mx-auto w-11/12 sm:w-10/12">
+    <slot />
+  </main>
+
+  <section class="flex flex-col max-w-screen-xl mx-auto w-11/12 sm:w-10/12 mb-4">
+    <slot name="comments" />
+  </section>
+
+  <SiteFooter />
+</body>
+
+</html>

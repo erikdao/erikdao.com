@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FeedHeader from '../../components/FeedHeader.astro';
+import PostList from '../../components/PostList.astro';
+
+const posts = (await getCollection('machine-learning'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<Base title="Machine Learning" summary="This page contains posts under machine learning, computer vision topics I've learned through courses, projects I'm involved in, or from my research on the internet." socialImage="/images/about/fb_og_about.png">
+  <FeedHeader title="Machine Learning" summary="This page contains posts under machine learning, computer vision topics I've learned through courses, projects I'm involved in, or from my research on the internet." />
+  <PostList posts={posts} baseUrl="/machine-learning/" />
+</Base>
