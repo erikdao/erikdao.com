@@ -51,7 +51,7 @@
     },
     {
       "order": 10,
-      "text": "🏋️‍♂️ Lose weights, maintain ~75kg",
+      "text": "🏋️‍ Lose weights, maintain ~75kg",
       "done": false
     },
     {
@@ -110,12 +110,13 @@
     {
       "order": 21,
       "text": "👨‍🔧 Build my own tech product",
-      "done": false
+      "subText": "(https://bachable.io)",
+      "done": true
     },
     {
       "order": 22,
       "text": "❤️ Go on a date in Paris 🇫🇷",
-      "done": false
+      "done": true
     },
     {
       "order": 23,
@@ -195,7 +196,7 @@
     {
       "order": 37,
       "text": "🗽 Visit New York",
-      "done": false
+      "done": true
     },
     {
       "order": 38,
@@ -210,6 +211,16 @@
     {
       "order": 40,
       "text": "📕 Publish a book",
+      "done": false
+    },
+    {
+      "order": 41,
+      "text": "Be supportive",
+      "done": false
+    },
+    {
+      "order": 42,
+      "text": "Be nice",
       "done": false
     },
     {
