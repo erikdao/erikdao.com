@@ -1,0 +1,61 @@
+---
+import Base from './Base.astro';
+import site from '../data/site.json';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    date: string;
+    tags: string[];
+    summary?: string;
+    socialImage?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+
+function toISODate(dateStr: string): string {
+  return new Date(dateStr).toISOString();
+}
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<Base title={frontmatter.title} summary={frontmatter.summary} socialImage={frontmatter.socialImage}>
+  <article class="post mb-20">
+    <div class="post__header text-center mb-14">
+      <h1 class="text-4xl sm:text-6xl leading-none font-sans font-medium mb-6 text-gray-800">{frontmatter.title}</h1>
+      <div class="w-full mx-auto text-center">
+        <time datetime={toISODate(frontmatter.date)} class="font-light text-gray-600">{formatDate(frontmatter.date)}</time> &sdot;
+        {frontmatter.tags.map((tag) => (
+          <span class="uppercase text-gray-600 mr-2">{tag}</span>
+        ))}
+      </div>
+    </div>
+    <div class="post__content mx-auto w-11/12 sm:w-9/12 text-lg sm:text-xl text-gray-600 font-serif font-light leading-normal">
+      <slot />
+    </div>
+  </article>
+
+  <Fragment slot="comments">
+    <div id="disqus_thread"></div>
+    <script define:vars={{ pageUrl, pageId: Astro.url.pathname }}>
+      var disqus_config = function () {
+        this.page.url = pageUrl;
+        this.page.identifier = pageId;
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-erikdao-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </Fragment>
+</Base>

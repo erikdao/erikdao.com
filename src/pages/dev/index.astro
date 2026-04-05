@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FeedHeader from '../../components/FeedHeader.astro';
+import PostList from '../../components/PostList.astro';
+
+const posts = (await getCollection('dev'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<Base title="Software Development" summary="Collection of posts on various topics including web development, functional programming, tooling, and so on." socialImage="/images/about/fb_og_about.png">
+  <FeedHeader title="Software Development" summary="Collection of posts on various topics including web development, functional programming, tooling, and so on." />
+  <PostList posts={posts} baseUrl="/dev/" />
+</Base>

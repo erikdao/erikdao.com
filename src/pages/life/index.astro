@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FeedHeader from '../../components/FeedHeader.astro';
+import PostList from '../../components/PostList.astro';
+
+const posts = (await getCollection('life'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<Base title="Life stories" summary="Various things in my life. Posts mostly in Vietnamese, with some in English." socialImage="/images/about/fb_og_about.png">
+  <FeedHeader title="Life stories" summary="Various things in my life. Posts mostly in Vietnamese, with some in English." />
+  <PostList posts={posts} baseUrl="/life/" />
+</Base>

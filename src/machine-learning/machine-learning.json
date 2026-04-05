@@ -1,4 +1,0 @@
-{
-  "layout": "layouts/post.html",
-  "permalink": "/machine-learning/{{ title | slug }}/index.html"
-}

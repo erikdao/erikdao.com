@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+
+const allCollections = await Promise.all([
+  getCollection('dev'),
+  getCollection('machine-learning'),
+  getCollection('life'),
+  getCollection('violin'),
+]);
+
+const collectionUrlMap: Record<string, string> = {
+  dev: '/dev/',
+  'machine-learning': '/machine-learning/',
+  life: '/life/',
+  violin: '/violin/',
+};
+
+const featuredPosts = allCollections
+  .flat()
+  .filter((post) => post.data.featured)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+
+function toISODate(dateStr: string): string {
+  return new Date(dateStr).toISOString();
+}
+
+function truncate(str: string, len: number): string {
+  if (str.length <= len) return str;
+  return str.slice(0, len) + '...';
+}
+
+function getPostUrl(post: { collection: string; id: string }): string {
+  return `${collectionUrlMap[post.collection]}${post.id}/`;
+}
+---
+
+<div id="featured-posts" class="flex flex-col mb-20">
+  <h2 class="font-serif text-3xl mb-6">Recent posts</h2>
+
+  <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {featuredPosts.map((item) => (
+      <li class="featured__item col-span-1 flex flex-col justify-between rounded-lg hover:shadow-md transition-all duration-100 bg-gray-50 cursor-pointer">
+        <div class="flex-1 flex flex-col overflow-hidden">
+          {item.data.socialImage && (
+            <div class="w-full block">
+              <img src={item.data.socialImage} alt="" class="rounded-t-lg w-full item__img">
+            </div>
+          )}
+          <time datetime={toISODate(item.data.date)} class="text-sm text-gray-600 py-2 px-4">{formatDate(item.data.date)}</time>
+          <h3 class="text-xl font-sans font-semibold leading-tight px-4 transition-colors duration-75 text-rose-600">
+            <a href={getPostUrl(item)}>{item.data.title}</a>
+          </h3>
+          <div class="flex flex-col p-4 overflow-hidden">
+            <p class="block h-28 max-h-32 overflow-ellipsis font-serif text-gray-500 text-base leading-snug">{truncate(item.data.summary, 150)}</p>
+          </div>
+        </div>
+        <div class="p-4">
+          {item.data.tags.map((tag) => (
+            <span class="uppercase text-xs mr-2 mb-2 p-2 bg-rose-100 rounded text-rose-700">{tag}</span>
+          ))}
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
