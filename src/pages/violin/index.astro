@@ -8,7 +8,7 @@ const posts = (await getCollection('violin'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
-<Base title="Violin Playing" summary="I started learning to play the violin since Aug 2023. It's been an exciting and joyful experience for me ever since. I share my journey to discover the art of violin playing here." socialImage="/images/books/2023_books_fb_og.jpeg" useBookFonts={true}>
+<Base title="Violin Playing" summary="I started learning to play the violin since Aug 2023. It's been an exciting and joyful experience for me ever since. I share my journey to discover the art of violin playing here." socialImage="/images/books/2023_books_fb_og.jpeg">
   <FeedHeader title="Violin Playing" summary="I started learning to play the violin since Aug 2023. It's been an exciting and joyful experience for me ever since. I share my journey to discover the art of violin playing here." />
   <PostList posts={posts} baseUrl="/violin/" />
 </Base>

@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "Inter Display", sans-serif;
+  --font-serif: "Libre Bodoni", serif;
+
   --color-rose-50: oklch(0.97 0.02 12);
   --color-rose-100: oklch(0.94 0.04 12);
   --color-rose-500: oklch(0.65 0.19 12);
@@ -24,15 +27,15 @@
  * Format markdown post content
  */
 .post__content h2 {
-  @apply text-2xl sm:text-3xl font-sans font-semibold mt-6 mb-4 text-rose-600;
+  @apply text-2xl sm:text-3xl font-serif font-semibold mt-6 mb-4 text-rose-600;
 }
 
 .post__content h2 + .post__content h3 {
-  @apply text-2xl sm:text-3xl font-sans font-semibold mt-6 mb-2 text-rose-600;
+  @apply text-2xl sm:text-3xl font-serif font-semibold mt-6 mb-2 text-rose-600;
 }
 
 .post__content h3 {
-  @apply text-xl sm:text-2xl font-sans font-medium mt-6 mb-3 text-gray-700;
+  @apply text-xl sm:text-2xl font-serif font-medium mt-6 mb-3 text-gray-700;
 }
 
 .post__content p + .post__content h2 {
@@ -115,9 +118,9 @@
 
 /* Customs for book page */
 .book-content {
-  font-family: "EB Garamond", serif;
+  font-family: "Libre Bodoni", serif;
 }
 
 .font-book {
-  font-family: "EB Garamond", serif;
+  font-family: "Libre Bodoni", serif;
 }

@@ -12,6 +12,7 @@ Thumbs.db
 # Node modules and output
 node_modules/
 dist/
+.astro/
 src/_includes/assets/css
 
 # Logs

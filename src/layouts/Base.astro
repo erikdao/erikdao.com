@@ -10,10 +10,9 @@ interface Props {
   title?: string;
   summary?: string;
   socialImage?: string;
-  useBookFonts?: boolean;
 }
 
-const { title = site.name, summary, socialImage, useBookFonts = false } = Astro.props;
+const { title = site.name, summary, socialImage } = Astro.props;
 const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
@@ -27,7 +26,6 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
     title={title}
     summary={summary}
     socialImage={socialImage}
-    useBookFonts={useBookFonts}
     currentUrl={currentUrl}
   />
   <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">

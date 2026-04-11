@@ -29,7 +29,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 <Base title={frontmatter.title} summary={frontmatter.summary} socialImage={frontmatter.socialImage}>
   <article class="post mb-20">
     <div class="post__header text-center mb-14">
-      <h1 class="text-4xl sm:text-6xl leading-none font-sans font-medium mb-6 text-gray-800">{frontmatter.title}</h1>
+      <h1 class="text-4xl sm:text-6xl leading-none font-serif font-medium mb-6 text-gray-800">{frontmatter.title}</h1>
       <div class="w-full mx-auto text-center">
         <time datetime={toISODate(frontmatter.date)} class="font-light text-gray-600">{formatDate(frontmatter.date)}</time> &sdot;
         {frontmatter.tags.map((tag) => (
@@ -37,7 +37,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
         ))}
       </div>
     </div>
-    <div class="post__content mx-auto w-11/12 sm:w-9/12 text-lg sm:text-xl text-gray-600 font-serif font-light leading-normal">
+    <div class="post__content mx-auto w-11/12 sm:w-9/12 text-lg sm:text-xl text-gray-600 font-sans font-light leading-normal">
       <slot />
     </div>
   </article>

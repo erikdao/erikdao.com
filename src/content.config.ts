@@ -9,7 +9,6 @@ const postSchema = z.object({
   featured: z.boolean().optional().default(false),
   summary: z.string(),
   socialImage: z.string().optional(),
-  useBookFonts: z.boolean().optional().default(false),
 });
 
 const dev = defineCollection({
