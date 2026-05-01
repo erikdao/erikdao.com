@@ -12,9 +12,11 @@ Linear regression is the simplest method for regression analysis. With current s
 ## Formulation
 ### Problem statement
 Linear regression is a supervised learning method that learns to model a dependent variable $$y$$ as a function of some independent variables, a.k.a, **features**, by finding the straight line that best fits the data. The data for linear regression comes as input/output pairs
-<div class="block-equation">
-  $$\mathcal{D} = \{ \left( \mathbf{x_1}, y_1 \right), \left( \mathbf{x_2}, y_2 \right), \dots, \left( \mathbf{x_N}, y_N \right)\}$$
-</div>
+
+$$
+\mathcal{D} = \{ \left( \mathbf{x_1}, y_1 \right), \left( \mathbf{x_2}, y_2 \right), \dots, \left( \mathbf{x_N}, y_N \right)\}
+$$
+
 where each input sample $$\mathbf{x}_i$$ is a vector of $$p$$ features, and the ouput $$y_i$$ is scalar-valued. In the simplest case, $$p = 1$$, i.e., the input has one feature, linear regression is like to drawing a straight trend line in a scatter plot. In general, however, $$p > 1$$ in which case the linear regression problem is analogous to fitting a hyperplane to a scatter points in $$p + 1$$ dimensional space.
 
 <figure class="figure mx-auto w-full md:w-3/5 p-2 flex flex-col items-center">
@@ -24,28 +26,34 @@ where each input sample $$\mathbf{x}_i$$ is a vector of $$p$$ features, and the 
 
 <br />
 Generally, the equation for linear regression for each data point is
-<div class="block-equation">
-  $$y = w_0 + w_1 x_1 + w_2 x_2 + \dots + w_p x_p + \epsilon$$
-</div>
+
+$$
+y = w_0 + w_1 x_1 + w_2 x_2 + \dots + w_p x_p + \epsilon
+$$
+
 where $$w_j$$ is the coefficient of the model. The first coefficient $$w_0$$ is often called the *intercept* of the model. $$\epsilon$$ is the irreducable error that cannot be expressed by our model. As a side note, other people might denote the coefficient as $$\beta_j$$.
 
 Since we have $$N$$ data points, the equation is often written in matrix form
-<div class="block-equation">
-  $$\mathbf{y} = \mathbf{XW} + \mathbf{\epsilon}$$
-</div>
+
+$$
+\mathbf{y} = \mathbf{XW} + \mathbf{\epsilon}
+$$
+
 where $$X$$ is the matrix of input data, and $$\mathbf{W}$$ is the coefficient matrix, or the weight matrix. You might have realized that there is something off about this equation. $$X$$ is of dimension $$(N, p)$$, while $$\mathbf{W}$$ is of the dimension $$(p+1,)$$; hence, matrix multiplication won't work here. To solve this issue, we can insert a constant $$1$$ as the first column of the matrix $$\mathbf{X}$$. And now our matrices look like followings
 
-<div class="block-equation">
-$$\mathbf{X} = \begin{bmatrix} 1 & x_{11} & x_{12} & \dots & x_{1p} \\\\ 1 & x_{21} & x_{22} & \dots & x_{2p}\\\\ \vdots & \vdots & \vdots & \ddots & \vdots \\\\ 1 & x_{N1} & x_{N2} & \dots & x_{Np} \end{bmatrix}$$ $$\quad \mathbf{W} = \begin{bmatrix} \beta_0 \\\\ \beta_1 \\\\ \vdots \\\\ \beta_p \end{bmatrix}$$ $$\quad \mathbf{y} = \begin{bmatrix} y_1 \\\\ y_2 \\\\ \vdots \\\\ y_N \end{bmatrix}$$ $$\quad \mathbf{\epsilon} = \begin{bmatrix} \epsilon_1 \\\\ \epsilon_2 \\\\ \vdots \\\\ \epsilon_N \end{bmatrix}$$
-</div>
+$$
+\mathbf{X} = \begin{bmatrix} 1 & x_{11} & x_{12} & \dots & x_{1p} \\ 1 & x_{21} & x_{22} & \dots & x_{2p}\\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 1 & x_{N1} & x_{N2} & \dots & x_{Np} \end{bmatrix} \quad \mathbf{W} = \begin{bmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ \beta_p \end{bmatrix} \quad \mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_N \end{bmatrix} \quad \mathbf{\epsilon} = \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_N \end{bmatrix}
+$$
 
 Fitting a linear regression model is all about finding the best weights $$\mathbf{W}$$ that best model $$y$$ as a function of the input features. While we might never find the "true" weights, we can estimate them. We are going to look into two methods for estimating the weights below. But first, let's look at the loss function for our linear regression model.
 
 ### Loss function
 The loss function quantifies how good or bad our linear regression model is. To train the model, we employ the **mean squared error** (MSE) as our loss function.
-<div class="block-equation">
-  $$\displaystyle MSE = \mathcal{L}\left(\mathbf{W}\right) = \frac{1}{2} \sum_{i=1}^N \left\vert y_i - \sum_{j=0}^p x_{ij} w_{j} \right\vert ^2 = \frac{1}{2} \lVert \mathbf{y} - \mathbf{X W} \rVert ^2_2 $$
-</div>
+
+$$
+\displaystyle MSE = \mathcal{L}\left(\mathbf{W}\right) = \frac{1}{2} \sum_{i=1}^N \left\vert y_i - \sum_{j=0}^p x_{ij} w_{j} \right\vert ^2 = \frac{1}{2} \lVert \mathbf{y} - \mathbf{X W} \rVert ^2_2
+$$
+
 We add a constant $$\frac{1}{2}$$ to the equation above to simplify the calculation of the gradient of this loss function, as shall be shown below. The square of the errors give more weight to points that are further from the regression line, thus, punishing more the outliners.
 
 <figure class="figure mx-auto w-full md:w-3/5 p-2 flex flex-col items-center">
@@ -54,38 +62,47 @@ We add a constant $$\frac{1}{2}$$ to the equation above to simplify the calculat
 </figure>
 
 The optimal set of weights $$\mathbf{\hat{W}}$$ is the one that minize the loss function.
-<div class="block-equation">
-  $$\hat{\mathbf{W}} = \underset{\mathbf{W}}{\arg\min}~ \mathcal{L}\left(\mathbf{W}\right)$$
-</div>
 
+$$
+\hat{\mathbf{W}} = \underset{\mathbf{W}}{\arg\min}~ \mathcal{L}\left(\mathbf{W}\right)
+$$
 
 Our MSE loss function is a convex function; hence, we can find the optimal weights that minize the loss using methods such as Ordinary Least Squares (OLS) or Gradient Descent (GD).
 
 ### Parameter estimation with Ordinary Least Squares
 Let's look closer at the loss function
-<div class="block-equation">
-  $$\begin{aligned} \mathcal{L}\left(\mathbf{W}\right) &= \frac{1}{2} \lVert \mathbf{y} - \mathbf{X W} \rVert ^2_2 \\\\ &= \frac{1}{2} \left(\mathbf{y} - \mathbf{X W}\right)^{\top} \left(\mathbf{y} - \mathbf{X W}\right) \\\\ &= \frac{1}{2} \left(\mathbf{y}^{\top} - \mathbf{W}^{\top}\mathbf{X}^{\top} \right) \left(\mathbf{y} - \mathbf{X W}\right) \\\\ &= \frac{1}{2} \left(\mathbf{y}^{\top}\mathbf{y} - \mathbf{y}^{\top}\mathbf{XW} - \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{y} + \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{X W}\right)\end{aligned}$$
-</div>
+
+$$
+\begin{aligned} \mathcal{L}\left(\mathbf{W}\right) &= \frac{1}{2} \lVert \mathbf{y} - \mathbf{X W} \rVert ^2_2 \\ &= \frac{1}{2} \left(\mathbf{y} - \mathbf{X W}\right)^{\top} \left(\mathbf{y} - \mathbf{X W}\right) \\ &= \frac{1}{2} \left(\mathbf{y}^{\top} - \mathbf{W}^{\top}\mathbf{X}^{\top} \right) \left(\mathbf{y} - \mathbf{X W}\right) \\ &= \frac{1}{2} \left(\mathbf{y}^{\top}\mathbf{y} - \mathbf{y}^{\top}\mathbf{XW} - \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{y} + \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{X W}\right)\end{aligned}
+$$
+
 Since the loss function is convex, the optimum solution lies at gradient zero. So now we derive the gradient of the loss function w.r.t to $$\mathbf{W}$$
-<div class="block-equation">
-  $$\begin{aligned}\displaystyle \frac{\partial \mathcal{L}}{\partial \mathbf{W}} &= \frac{1}{2} \frac{\partial \left( \mathbf{y}^{\top}\mathbf{y} - \mathbf{y}^{\top}\mathbf{XW} - \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{y} + \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{X W} \right)}{\partial \mathbf{W}} \\\\ &= \frac{1}{2} \left( -\mathbf{y}^{\top}\mathbf{X} - \mathbf{X}^{\top}\mathbf{y} + 2\mathbf{X}^{\top}\mathbf{X W} \right) \\\\ &= \frac{1}{2} \left( -2\mathbf{X}^{\top}\mathbf{y} + 2\mathbf{X}^{\top}\mathbf{X W} \right) \\\\ &=  \mathbf{X}^{\top}\mathbf{y} + \mathbf{X}^{\top}\mathbf{X W} \end{aligned}$$
-</div>
+
+$$
+\begin{aligned}\displaystyle \frac{\partial \mathcal{L}}{\partial \mathbf{W}} &= \frac{1}{2} \frac{\partial \left( \mathbf{y}^{\top}\mathbf{y} - \mathbf{y}^{\top}\mathbf{XW} - \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{y} + \mathbf{W}^{\top}\mathbf{X}^{\top}\mathbf{X W} \right)}{\partial \mathbf{W}} \\ &= \frac{1}{2} \left( -\mathbf{y}^{\top}\mathbf{X} - \mathbf{X}^{\top}\mathbf{y} + 2\mathbf{X}^{\top}\mathbf{X W} \right) \\ &= \frac{1}{2} \left( -2\mathbf{X}^{\top}\mathbf{y} + 2\mathbf{X}^{\top}\mathbf{X W} \right) \\ &=  \mathbf{X}^{\top}\mathbf{y} + \mathbf{X}^{\top}\mathbf{X W} \end{aligned}
+$$
+
 Solve this equation equals to $$0$$, we get
-<div class="block-equation">
-  $$\begin{aligned} -\mathbf{X}^{\top}\mathbf{y} + \mathbf{X}^{\top}\mathbf{X W} &= 0 \\\\ \mathbf{X}^{\top}\mathbf{X W} &= \mathbf{X}^{\top}\mathbf{y} \\\\ \mathbf{W} &=  \left(\mathbf{X}^{\top}\mathbf{X}\right)^{-1}\mathbf{X}^{\top}\mathbf{y} \end{aligned}$$
-</div>
+
+$$
+\begin{aligned} -\mathbf{X}^{\top}\mathbf{y} + \mathbf{X}^{\top}\mathbf{X W} &= 0 \\ \mathbf{X}^{\top}\mathbf{X W} &= \mathbf{X}^{\top}\mathbf{y} \\ \mathbf{W} &=  \left(\mathbf{X}^{\top}\mathbf{X}\right)^{-1}\mathbf{X}^{\top}\mathbf{y} \end{aligned}
+$$
+
 If you're still mathematically curious, we can use the Gauss-Markov theorem to prove that the set of coefficients $$\mathbf{W}$$ obtained in the equation above is optimal.
 
 ### Parameter estimation with Gradient Descent
 Again, as the MSE loss function is a convex function; GD can have a chance to find the optimal minimum. Let's modify the equation for the gradient a bit
-<div class="block-equation">
-  $$\begin{aligned}\displaystyle \frac{\partial \mathcal{L}}{\partial \mathbf{W}} &= -\mathbf{X}^{\top}\mathbf{y} + \mathbf{X}^{\top}\mathbf{X W} \\\\ \nabla \mathbf{W} &= -\mathbf{X}^{\top} \left(\mathbf{y} + \mathbf{XW} \right) = -\left( \mathbf{XW} - \mathbf{y} \right)^{\top} \mathbf{X} \\\\ \nabla \mathbf{W} &= \left(\hat{\mathbf{y}} - \mathbf{y}\right)^{\top}\mathbf{X}\end{aligned}$$
-</div>
+
+$$
+\begin{aligned}\displaystyle \frac{\partial \mathcal{L}}{\partial \mathbf{W}} &= -\mathbf{X}^{\top}\mathbf{y} + \mathbf{X}^{\top}\mathbf{X W} \\ \nabla \mathbf{W} &= -\mathbf{X}^{\top} \left(\mathbf{y} + \mathbf{XW} \right) = -\left( \mathbf{XW} - \mathbf{y} \right)^{\top} \mathbf{X} \\ \nabla \mathbf{W} &= \left(\hat{\mathbf{y}} - \mathbf{y}\right)^{\top}\mathbf{X}\end{aligned}
+$$
 
 Having devised the gradient of our loss function, the update equation of the GD algorithm is
-<div class="block-equation">
-  $$\mathbf{W} = \mathbf{W} - \eta * \left( \hat{\mathbf{y}} - \mathbf{y} \right)^{\top} \mathbf{W}$$
-</div>
+
+$$
+\mathbf{W} = \mathbf{W} - \eta * \left( \hat{\mathbf{y}} - \mathbf{y} \right)^{\top} \mathbf{W}
+$$
+
 where $$\eta$$ is the learning rate.
 
 ### Assumptions of Linear Regression model

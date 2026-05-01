@@ -38,9 +38,9 @@ As its name indicates, IoU is the ratio between the area of intersection and the
 
 IoU is stemmed from the Jaccard Index, a coefficient measure the similarity between two finite sample sets.
 
-<div class="block-equation">
-  $$J \left( b, \hat{b} \right) = \mathrm{IoU} = \displaystyle \frac{\mathrm{area} \left( b \cap \hat{b} \right)}{\mathrm{area} \left( b \cup \hat{b} \right)}$$
-</div>
+$$
+J \left( b, \hat{b} \right) = \mathrm{IoU} = \displaystyle \frac{\mathrm{area} \left( b \cap \hat{b} \right)}{\mathrm{area} \left( b \cup \hat{b} \right)}
+$$
 
 IoU varies between $$0$$ and $$1$$. An $$\mathrm{IoU} = 1$$ means a perfect match between prediction and ground-truth, while $$\mathrm{IoU} = 0$$ means the predicted and the ground-truth boxes do not overlap. By varying the threshold $$\mathrm{IoU} = \epsilon$$ we can control how restrictive or relaxing the metric is. Moreover, this threshold is used to decide if a detection is correct or not. A correct, or positive, detection has $$\mathrm{IoU} \geq \epsilon$$, otherwise, the detection is an incorrect, or negative one. More formally, predictions are classified as **True Positive** (TP), **False Positive** (FP) and **False Negative** (FN)
 
@@ -58,17 +58,21 @@ In the leftmost illustration of a TP example, there is a ground-truth box of the
 ## Precision and Recall
 
 **Precision** reflects how well a model is in predicting bounding boxes that match ground-truth boxes, i.e. making positive predictions. It is the ratio between number of TP(s) to total number of positive predictions.
-<div class="block-equation">
-  $$\mathrm{Pr} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}} = \frac{\mathrm{TP}}{\text{all detections}}$$
-</div>
+
+$$
+\mathrm{Pr} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}} = \frac{\mathrm{TP}}{\text{all detections}}
+$$
+
 For example, if a model makes 100 bounding-box predictions for the cats in the dataset, and 90 of them are correct predictions (i.e., each box has an IoU higher than predefined threshold, say $$\epsilon = 0.5$$, w.r.t to its corresponding ground-truth), then the precision of the model for the <code>cat</code> label is 90 percent. Precision is often expressed as percentage, or within the range of $$0$$ to $$1$$.
 
 A low precision indicates that the model makes a lot of FP predictions. In contrast, a high precision is when the model either making lots of TP, or very few FP predictions.
 
 **Recall** is the ratio between the number of TP and the actual number of relevant objects.
-<div class="block-equation">
-  $$\mathrm{Rc} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}} = \frac{\mathrm{TP}}{\text{all ground-truths}}$$
-</div>
+
+$$
+\mathrm{Rc} = \displaystyle \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}} = \frac{\mathrm{TP}}{\text{all ground-truths}}
+$$
+
 Recall reflects the <em>sensitivity</em> of the model in detecting ground-truth objects. Similar to precision, recall can also be expressed as percentange, or value between $$0$$ and $$1$$.
 
 ### Interpretations of Precision-Recall
@@ -89,41 +93,51 @@ We can see that $$\mathrm{TP}(\tau)$$ and $$\mathrm{FP}(\tau)$$ are decreasing f
 </figure>
 
 The average precision is the area under the precision-recall curve, and is formally defined as
-<div class="block-equation">
-  $$\mathrm{AP} = \displaystyle \int p(\tau) d\tau $$
-</div>
+
+$$
+\mathrm{AP} = \displaystyle \int p(\tau) d\tau
+$$
 
 In practice, the precision-recall is often of zigzag-like shape, making it challenging to evaluate this integral. To circumvent this issue, the precision-recall curve is often first smoothed using either 11-point interpolation or all-point interpolation.
 
 ### 11-point interpolation
 
 In this method, the precision-recall curve is summarized by averaging the maximum precision values at a set of 11 equally spaced recal levels $$[0, 0.1, 0.2, \dots, 1]$$ , as given by
-<div class="block-equation">
-  $$\displaystyle \mathrm{AP}_{11} = \frac{1}{11} \underset{R \in \{0, 0.1, 0.2, \dots, 0.9, 1 \}}{\sum} P_{\mathrm{interp}} (R)$$
-</div>
+
+$$
+\displaystyle \mathrm{AP}_{11} = \frac{1}{11} \underset{R \in \{0, 0.1, 0.2, \dots, 0.9, 1 \}}{\sum} P_{\mathrm{interp}} (R)
+$$
+
 where $$ P_{\mathrm{interp}} (R)$$ is the interpolated precision at recall $$R$$, and is defined as
-<div class="block-equation">
-  $$\displaystyle P_{\mathrm{interp}} (R) = \underset{\tilde{R}:\tilde{R} \geq R}{\max} P\left( \tilde{R} \right)$$
-</div>
+
+$$
+\displaystyle P_{\mathrm{interp}} (R) = \underset{\tilde{R}:\tilde{R} \geq R}{\max} P\left( \tilde{R} \right)
+$$
+
 What it means is that instead of using the $$P(R)$$ at every observed recall level, the AP is obtained by considering the maximum precision $$ P_{\mathrm{interp}} (R)$$ whose recall value is greater than $$R$$.
 
 ### All-point interpolation
 
 In this approach, instead of taking only serveral points into consideration, the AP is computed by interpolating at each recall level, taking the maximum precision whose recall value is greater than or equal to $$R_{n+1}$$.
-<div class="block-equation">
-  $$\displaystyle \mathrm{AP}_{\mathrm{all}} = \sum_n \left( R_{n+1} - R_n \right) P_{\mathrm{interp}} (R_{n+1})$$
-</div>
+
+$$
+\displaystyle \mathrm{AP}_{\mathrm{all}} = \sum_n \left( R_{n+1} - R_n \right) P_{\mathrm{interp}} (R_{n+1})
+$$
+
 where
-<div class="block-equation">
-  $$\displaystyle P_{\mathrm{interp}} (R_{n+1}) = \underset{\tilde{R}:\tilde{R} \geq R_{n+1}}{\max} P\left( \tilde{R} \right) $$
-</div>
+
+$$
+\displaystyle P_{\mathrm{interp}} (R_{n+1}) = \underset{\tilde{R}:\tilde{R} \geq R_{n+1}}{\max} P\left( \tilde{R} \right)
+$$
 
 ## mean Average Precision - mAP
 
 The AP is often computed separately for each object class; then, the final performance of a detection model is often reported by taking the average over all classes, or, to obtain the mean average precision - mAP.
-<div class="block-equation">
-  $$\displaystyle \mathrm{mAP} = \frac{1}{N} \sum_{i=1}^N \mathrm{AP}_i$$
-</div>
+
+$$
+\displaystyle \mathrm{mAP} = \frac{1}{N} \sum_{i=1}^N \mathrm{AP}_i
+$$
+
 where $$\mathrm{AP}_i$$ is the average precision for the $$i$$th class.
 
 ## Object detection challenges and their APs
@@ -152,14 +166,20 @@ Object detection is a very active field of research, especially with the flouris
           <tr class="text-center">
             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">MSCOCO
             </td>
-            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">$$\mathrm{AP}@[.5:.05:.95]; AP@50; AP@75; \mathrm{AP}_S; \mathrm{AP}_M; \mathrm{AP}_L$$
-            </td>
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+
+$$\mathrm{AP}@[.5:.05:.95]; AP@50; AP@75; \mathrm{AP}_S; \mathrm{AP}_M; \mathrm{AP}_L$$
+
+</td>
           </tr>
           <tr class="text-center">
             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">ImageNet
             </td>
-            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">$$\mathrm{mAP} (\mathrm{IoU} = 0.5)$$
-            </td>
+            <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+
+$$\mathrm{mAP} (\mathrm{IoU} = 0.5)$$
+
+</td>
           </tr>
         </tbody>
       </table>
