@@ -19,10 +19,6 @@
   @apply text-rose-600 transition-all duration-100;
 }
 
-.block-equation {
-  @apply flex justify-center py-4;
-}
-
 /*
  * Format markdown post content
  */

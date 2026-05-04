@@ -10,7 +10,7 @@ export default defineConfig({
   markdown: {
     shikiConfig: { theme: 'github-light' },
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [[rehypeKatex, { throwOnError: true, strict: 'error' }]],
   },
   vite: {
     plugins: [tailwindcss()],

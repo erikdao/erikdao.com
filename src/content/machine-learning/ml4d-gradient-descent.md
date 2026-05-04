@@ -11,9 +11,15 @@ From an optimization point of view, deep learning is mostly about solving a larg
 
 ## Gradient Descent through a not-very-simple example
 Generally, gradient descent is an algorithm for finding the local minimum of a differential function by taking repated steps in the opposite direction of the gradient of that function. Assume that our function $$f$$ is parameterized by $$\mathbf{w}$$, or  a set of weights. The algorithm is as simple as
-<div class="block-equation">
-  $$\text{Repeat until convergence} \quad \{ \\\\ \qquad \mathbf{w} = \mathbf{w} - \eta * \nabla f\left(\mathbf{w}\right) \\\\ \}$$
-</div>
+
+$$
+\begin{aligned}
+&\text{Repeat until convergence} \quad \{ \\
+&\qquad \mathbf{w} = \mathbf{w} - \eta * \nabla f\left(\mathbf{w}\right) \\
+&\}
+\end{aligned}
+$$
+
 where
 
 * $$\mathbf{w}$$: the parameters we're updating
@@ -29,9 +35,11 @@ A natural set of questions one would ask with this description of the algorithm 
 These are all valid questions and seeking the answers to those questions will help us understand gradient descent. Let's try to find the answers (or part of them) for those questions through a simple example.
 
 We will use gradient descent to find the minimum of the following function
-<div class="block-equation">
-  $$f(w) = \frac{1}{50} \left( w^4 + w^2 + 10w \right)$$
-</div>
+
+$$
+f(w) = \frac{1}{50} \left( w^4 + w^2 + 10w \right)
+$$
+
 This function is indeed a simple one that, in reality, we would hardly see any loss function as simple as this for neural networks. It is a convex function, so it has a global minimum. It is not very simple in the sense that it probably takes more than 30 seconds for you to find the value of $$w$$ corresponding to the global minimum of the function.
 
 <figure class="figure mx-auto w-full md:w-3/5 p-2 flex flex-col items-center">
@@ -40,32 +48,45 @@ This function is indeed a simple one that, in reality, we would hardly see any l
 
 ### Finding the minimum with calculus
 If you recall some calculus knowledge from high school, you can see that $$f(w)$$ is determined for all $$w \in \mathbb{R}$$, i.e., the function is continuous, so it has derivates at all points within its domain. The first-order and second-order derivates of the function are
-<div class="block-equation">
-  $$\begin{aligned} f'\left( w \right) &= \frac{1}{50} \left( 4w^3 + 2w + 10 \right) \\\\ f''\left(w\right) &= \frac{1}{50} \left( 12w^2 + 2\right) \end{aligned}$$
-</div>
+
+$$
+\begin{aligned} f'\left( w \right) &= \frac{1}{50} \left( 4w^3 + 2w + 10 \right) \\ f''\left(w\right) &= \frac{1}{50} \left( 12w^2 + 2\right) \end{aligned}
+$$
 
 As $$f''(w) > 0$$ for all $$w \in \mathbb{R}$$, we are convinced that $$f$$ is a convex function. Furthermore, as the function has both first-order and second-order deratives determined at all points, there exists points $$w^*$$ such that
-<div class="block-equation">
-  $$\begin{cases} f'(w^*) = 0\\\\ f''(w^*) > 0\end{cases}$$
-</div>
+
+$$
+\begin{cases} f'(w^*) = 0\\ f''(w^*) > 0\end{cases}
+$$
+
 and the function $$f$$ has its minimum at $$w = w^*$$. Since $$f''(w) > 0$$, to find $$w^*$$, we only need to solve
-<div class="block-equation">
-  $$f'(w) = \frac{1}{50} \left( 4w^3 + 2w + 10 \right) = 0$$
-</div>
+
+$$
+f'(w) = \frac{1}{50} \left( 4w^3 + 2w + 10 \right) = 0
+$$
+
 I'm not going to devise the steps to solve this problem so that you will not feel that this article is about high-school calculus, not gradient descent. You can convince yourself <a href="https://www.wolframalpha.com/input?i=solve+1%2F50+%284x%5E3+%2B+2x+%2B+10%29+%3D+0" target="_blank">here</a> that $$f'(w) = 0$$ has a unique solution
-<div class="block-equation">
-  $$w^* = \displaystyle \frac{ \sqrt[3]{ \sqrt{2031} - 45 } }{6^{\frac{2}{3}}} - \frac{1}{\sqrt[3]{6 \left(\sqrt{2031} - 45\right)}} \approx -1.2347824$$
-</div>
+
+$$
+w^* = \displaystyle \frac{ \sqrt[3]{ \sqrt{2031} - 45 } }{6^{\frac{2}{3}}} - \frac{1}{\sqrt[3]{6 \left(\sqrt{2031} - 45\right)}} \approx -1.2347824
+$$
+
 This is why I've told you it is unlikely to get the solution in 30 seconds if you do it by hands. Anyway, our function $$f$$ has a global minimum
-<div class="block-equation">
-  $$\min f(w) \approx -0.1699692 \quad \text{at}~w \approx -1.2347824$$
-</div>
+
+$$
+\min f(w) \approx -0.1699692 \quad \text{at}~w \approx -1.2347824
+$$
 
 ### Finding the minimum with gradient descent
 Let's find the minimum of $$f$$ with gradient descent, and see if we would end up at the same solution above. Until now, I haven't told you what "convergence" means, so we modify our algorithm a bit by repeating the update step for $$N$$ times. Our algorithm now looks like this
-<div class="block-equation">
-  $$w_0 = \text{a random value}\\\\ \text{for}~i = 1 \dots N:\\\\ \qquad w_i = w_{i-1} - \eta * \nabla f\left(w_{i-1}\right)$$
-</div>
+
+$$
+\begin{aligned}
+&w_0 = \text{a random value} \\
+&\text{for}~i = 1 \dots N: \\
+&\qquad w_i = w_{i-1} - \eta * \nabla f\left(w_{i-1}\right)
+\end{aligned}
+$$
 
 We can implement this simple algorithm in <a href="https://jax.readthedocs.io/en/latest/index.html" target="_blank">Jax</a>. Jax provides a convenient function `grad` to compute the gradient of an arbitarity function w.r.t. some input.
 
@@ -146,7 +167,11 @@ A saddle point is a point where it's minimum in one direction, and local maximum
 
 <figure class="figure mx-auto w-full md:w-3/5 flex flex-col items-center">
   <img src="/images/machine-learning/20221006_gradient_descent_saddle_point.png" />
-  <figcaption>$$(x, y) = (0, 0)$$ is a saddle point for $$f(x, y) = x^2 - y^2$$</figcaption>
+  <figcaption>
+
+$$(x, y) = (0, 0)$$ is a saddle point for $$f(x, y) = x^2 - y^2$$
+
+</figcaption>
 </figure>
 
 ## Variants of gradient descent
@@ -161,23 +186,21 @@ The rescue to those problems is to introduce randomness to the process.
 In this approach, instead of updating the parameter based on the gradient of all training examples, we update the parameter using the gradient computed from a single training example at each step, and we do this for all examples in our training dataset. In doing so, we introduce some sorts of randomness to the gradient descent. Indeed, we select one sample at a time, randomly, and calculate the gradient of the loss function w.r.t to the parameters. This gradient is an estimation of the actual gradient (computed on the entire dataset).
 
 The pseudo-code for the algorithm can be rewritten as below
+
 <div class="algorithm-block font-sans text-md rounded-xl overflow-auto bg-slate-100 border border-black/5 mb-2">
-  <div class="title p-2 bg-sky-100 text-sky-800 font-bold">Stochastic Gradient Descent</div>
-  <div class="content">
-    <ul>
-      <li>Initialize parameters $$\mathbf{w}$$</li>
-      <li>
-        <div class="mb-0">Repeat until convergence</div>
-        <ul>
-          <li>Randomly shuffle the training data</li>
-          <li>For $$i = 1\dots N$$:</li>
-          <ul>
-            <li>$$\mathbf{w} = \mathbf{w} - \eta * \nabla \mathcal{L}_i \left( \mathbf{w} \right)$$</li>
-          </ul>
-        </ul>
-      </li>
-    </ul>
-  </div>
+
+<div class="title p-2 bg-sky-100 text-sky-800 font-bold">Stochastic Gradient Descent</div>
+
+<div class="content p-4">
+
+- Initialize parameters $$\mathbf{w}$$
+- Repeat until convergence
+    - Randomly shuffle the training data
+    - For $$i = 1\dots N$$:
+        - $$\mathbf{w} = \mathbf{w} - \eta * \nabla \mathcal{L}_i \left( \mathbf{w} \right)$$
+
+</div>
+
 </div>
 
 The gradient estimated from a single example might be slightly different from the actual gradient. Therefore, when the batch gradient desccent is stuck at some local minimum, stochastic gradient descent might steer the update in a slightly different direction, which helps us get out of that minimum region. Stochastic gradient descent (SGD) trades faster iteration speed for slow convergence since we have to do multiple update steps per epoch.
