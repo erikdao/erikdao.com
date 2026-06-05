@@ -52,7 +52,7 @@ function getPostUrl(post: { collection: string; id: string }): string {
             </div>
           )}
           <time datetime={toISODate(item.data.date)} class="text-sm text-gray-600 py-2 px-4">{formatDate(item.data.date)}</time>
-          <h3 class="text-xl font-sans font-semibold leading-tight px-4 transition-colors duration-75 text-rose-600">
+          <h3 class="text-xl font-sans font-semibold leading-tight px-4 transition-colors duration-75 text-bach-orange-600">
             <a href={getPostUrl(item)}>{item.data.title}</a>
           </h3>
           <div class="flex flex-col p-4 overflow-hidden">
@@ -61,7 +61,7 @@ function getPostUrl(post: { collection: string; id: string }): string {
         </div>
         <div class="p-4">
           {item.data.tags.map((tag) => (
-            <span class="uppercase text-xs mr-2 mb-2 p-2 bg-rose-100 rounded text-rose-700">{tag}</span>
+            <span class="uppercase text-xs mr-2 mb-2 p-2 bg-bach-orange-100 rounded text-bach-orange-700">{tag}</span>
           ))}
         </div>
       </li>
