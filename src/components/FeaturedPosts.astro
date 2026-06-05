@@ -5,14 +5,12 @@ const allCollections = await Promise.all([
   getCollection('dev'),
   getCollection('machine-learning'),
   getCollection('life'),
-  getCollection('violin'),
 ]);
 
 const collectionUrlMap: Record<string, string> = {
   dev: '/dev/',
   'machine-learning': '/machine-learning/',
   life: '/life/',
-  violin: '/violin/',
 };
 
 const featuredPosts = allCollections
