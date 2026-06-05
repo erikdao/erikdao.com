@@ -77,10 +77,66 @@
   @apply text-sm font-sans text-gray-600 mt-4;
 }
 
-.post__content code {
+/* Inline code only — leave code inside Expressive Code (pre) untouched */
+.post__content :not(pre) > code {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
     Courier New, monospace;
   font-size: 0.8em;
+}
+
+/*
+ * Code blocks (Expressive Code) — ChatGPT/Claude-style dark window with a
+ * header bar showing the language label and an always-visible copy button.
+ */
+.post__content .expressive-code {
+  margin: 1.5rem 0;
+}
+
+.expressive-code .frame {
+  overflow: hidden;
+  border-radius: 0.625rem;
+  background: #24292e;
+}
+
+/* Header bar with the language label (set on the figure by our EC plugin) */
+.expressive-code .frame[data-language]::before {
+  content: attr(data-language);
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  color: #9da5b4;
+  background: #1f2428;
+  border-bottom: 1px solid #14171a;
+}
+
+/* Code area sits flush below the header */
+.expressive-code .frame pre {
+  border-radius: 0;
+  margin: 0;
+  padding-block: 0.9rem;
+}
+
+/* Lift the copy button into the header bar, right-aligned and always visible */
+.expressive-code .frame .copy {
+  inset-block-start: 0;
+  inset-inline-end: 0.4rem;
+  height: 2.5rem;
+  align-items: center;
+}
+
+.expressive-code .frame .copy button {
+  align-self: center;
+  opacity: 0.55;
+}
+
+.expressive-code .frame .copy button:hover {
+  opacity: 1;
 }
 
 .featured-article {
