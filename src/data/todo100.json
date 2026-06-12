@@ -216,12 +216,14 @@
     {
       "order": 41,
       "text": "Be supportive",
-      "done": false
+      "done": false,
+      "inProgress": true
     },
     {
       "order": 42,
       "text": "Be nice",
-      "done": false
+      "done": false,
+      "inProgress": true
     },
     {
       "order": "xx",
