@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal blog and portfolio site (erikdao.com) built with **Astro v6**, **Tailwind CSS v4**, and **TypeScript**. Content is authored in Markdown with YAML frontmatter using Astro Content Collections.
+Personal blog and portfolio site (erikdao.com) built with **Astro v7**, **Tailwind CSS v4**, and **TypeScript**. Content is authored in Markdown with YAML frontmatter using Astro Content Collections.
 
 ## Commands
 

@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
@@ -27,6 +28,8 @@ function pluginLanguageBadge() {
 
 export default defineConfig({
   site: 'https://erikdao.com',
+  // Preserve spaces between inline elements when upgrading to Astro 7.
+  compressHTML: true,
   integrations: [
     astroExpressiveCode({
       // Single dark theme → ChatGPT/Claude look on the light site.
@@ -45,9 +48,11 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    // Code blocks are handled by Expressive Code; Shiki config no longer needed.
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [[rehypeKatex, { throwOnError: true, strict: 'error' }]],
+    // Keep the remark/rehype pipeline used by math and Expressive Code.
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [[rehypeKatex, { throwOnError: true, strict: 'error' }]],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],
